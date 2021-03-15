@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hyeree - To Hear No Echo</title>    
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/rooms.css">
+    <script src="/script.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/functions.js"></script>
+    <script>
+      var socket = io()
+      
+      window.onload = async () => {
+        let body = document.querySelector('body')
+        let bg = document.querySelector('#wall')
+        let noise = document.querySelector("#noise")
+        
+        // floating background
+        body.addEventListener('mousemove', (event) => {
+          bg.style.transform = `translate(${showCoords(event,60)[0]}px, ${showCoords(event,60)[1]}px)`
+        })
+        body.addEventListener('touchmove', (event) => {
+          bg.style.transform = `translate(${touchCoords(event,60)[0]}px, ${touchCoords(event,60)[1]}px)`
+        })
+        
+        // add noises on click
+        body.addEventListener('click', (event) => {
+          let click = getClick(event)
+          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px; background-color:rgba(${click.depth},${click.depth},${click.depth},1)"></div>`
+          socket.emit('new click', click)
+        })
+        
+        // get noises on fresh
+        socket.on('refresh data', (noises)=>{
+          let n = noises.length
+          noise.innerHTML = getNoises(noises, n, "x", "y", "depth")
+        })         
+      }
+    </script>
+  </head>  
+  <body>
+    <div id="wall">
+      <nav id="top">
+        <a>seseri</a>
+        <a>[1]</a>
+        <a>[2]</a>
+        <a>[3]</a>
+        <a>thirty-thousand dollars in a box</a>
+        <a class="hoverImg">[1]</a>
+        <a class="hoverImg">[2]</a>
+      </nav>
+      <nav id="left">
+        <a>hyeree christina mary</a>
+        <a class="hoverVideo">[1]</a>
+      </nav>
+      <nav id="bottom">
+        <a>nago nago nago</a>
+        <a class="hoverImg">[1]</a>
+        <a>passage from 1903-1905 and on</a>
+        <a class="hoverImg">[1]</a>
+      </nav>
+      <nav id="right">
+        <a>moving prints</a>
+        <a class="hoverImg">[1]</a>
+        <a class="hoverImg">[2]</a>
+        <a class="hoverImg">[3]</a>
+      </nav>
+    </div>
+    
+    <a id="exit" href="../">Exit</a>
+    <a id="text">Text</a>
+    <p class="center name" id="hyeree">Hyeree Ro</p>
+    <div id="noise"></div>
+    <div id="showimage"></div>    
+  </body>
+</html>

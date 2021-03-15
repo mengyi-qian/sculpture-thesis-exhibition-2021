@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stella - To Hear No Echo</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/rooms.css">
+    <script src="/script.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/functions.js"></script>
+    <script>
+      var socket = io()
+      
+      window.onload = async () => {
+        let body = document.querySelector('body')
+        let bg = document.querySelector('#wall')
+        let noise = document.querySelector("#noise")
+        
+        // floating background
+        body.addEventListener('mousemove', (event) => {
+          bg.style.transform = `translate(${showCoords(event,60)[0]}px, ${showCoords(event,60)[1]}px)`
+        })
+        body.addEventListener('touchmove', (event) => {
+          bg.style.transform = `translate(${touchCoords(event,60)[0]}px, ${touchCoords(event,60)[1]}px)`
+        })
+        
+        // add noises on click
+        body.addEventListener('click', (event) => {
+          let click = getClick(event)
+          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px; background-color:rgba(${click.depth},${click.depth},${click.depth},1)"></div>`
+          socket.emit('new click', click)
+        })
+        
+        // get noises on fresh
+        socket.on('refresh data', (noises)=>{
+          let n = noises.length
+          noise.innerHTML = getNoises(noises, n, "x", "y", "depth")
+        })         
+      }
+    </script>
+  </head>  
+  <body>
+    <div id="wall">
+      <nav id="top">
+        <a>comet without a tail</a>
+        <a class="hoverImg">[1]</a>
+        <a class="hoverImg">[2]</a>
+        <a class="hoverImg">[3]</a>
+        <a class="hoverImg">[4]</a>
+        <a class="hoverImg">[5]</a>
+        <a class="hoverImg">[6]</a>
+        <a class="hoverImg">[7]</a>
+        <a class="hoverImg">[8]</a>
+      </nav>
+      <nav id="right">
+        <a class="hoverImg">[9]</a>
+        <a class="hoverImg">[10]</a>
+        <a class="hoverImg">[11]</a>
+        <a class="hoverImg">[12]</a>
+        <a class="hoverImg">[13]</a>
+      </nav>
+      <nav id="bottom">
+        <a>buttons</a>
+        <a class="hoverImg">[1]</a>
+        <a class="hoverImg">[2]</a>
+        <a class="hoverImg">[3]</a>
+        <a class="hoverImg">[4]</a>
+        <a class="hoverImg">[5]</a>
+        <a class="hoverImg">[6]</a>
+        <a class="hoverImg">[7]</a>
+      </nav>
+      <nav id="left">
+        <a>pond in pond II</a>
+        <a class="hoverVideo">[1]</a>
+        <a>yolk</a>
+        <a class="hoverVideo">[1]</a>
+      </nav>
+    </div>
+    
+    <a id="exit" href="../">Exit</a>
+    <a id="text">Text</a>
+    <p class="center name" id="stella">Stella Zhong</p>
+    <div id="noise"></div>
+    <div id="showimage"></div>
+    
+    <div id="text-container">
+      <div id="text-container-first">
+        <p class="text-title btext">A Log: StarchChip Enterprise</p>
+        <p>
+          <span class="btext">0:44: Rover and hover. Copy from Draco.</span>
+          <mark class="btext">&nbsp;</mark>
+          <span class="show-comment">
+            <span class="line">--------------------</span>
+            <span class="comment">OMG, our space is being infiltrated by an unknown entity! Look how weird it is, it’s so, like, brown-ish and flat. It’s so creepy! TFW you feel like you’re being stalked.</span>
+          </span>
+        </p>
+        <p>
+          <span class="btext">1:10: 15h 15m 53.8s, +56°19′44.″ Entering Splinter.</span>
+          <sup class="btext">1</sup>
+        </p>
+        <p class="btext">1:18: Birth within mirth, forms within morphs. Take note.</p>
+        <p>
+          <span class="btext">3:08: Exit and re-enter in 100ke.</span>
+          <mark><sup class="btext">2</sup></mark>
+          <span class="show-comment">
+            <span class="line">----------------------------</span>
+            <span class="comment">
+              Fam, fam, come on. We gotta do something. It was just chilling and now it’s whirling around again, like it thinks it’s some alien. Big yikes!!!
+              <br><br>Re: Huh, how now, thee gets heavier and heavier as I hoist thee up. Prithee, I couldn’t do this anymore, nay, I shan’t.
+              <br><br>Re: By my troth, this is the last one. I suppose her heart desires just one more take on her fancy device.
+              <br><br>Re: Ha! As good luck would have it.
+            </span>
+          </span>
+        </p>
+        <p>
+          <span class="btext">4:18: Find Splinter </span>
+          <mark class="btext">again</mark>.
+          <span class="show-comment">
+            <span class="line">-------------------------------------</span>
+            <span class="comment">Oh look! It’s standing still again, but now…wait a moment, it just turned into a mirror! We can see ourselves. Lol. We stan. Yes, no, I’m being serious. We stan ourselves.</span>
+          </span>
+        </p>
+        <p>
+          <span class="btext">4:19: Error. Error. False entry.</span>
+          <sup class="btext">3</sup>
+        </p>
+        <p>
+          <span class="btext">5:34: Successful exit. Review cause of mistake.</span>
+          <sup class="btext">4</sup>
+        </p>
+        
+        <p>----------------</p>
+        
+        <p class="footnote btext">[1] 60491ACA: It trembles and fumbles about—all but blurring my vision. It’s too close, yet too unknown. That nagging feeling inside me grows: it’s a weight that cannot be shaken off, like thick, gluey syrup that stubbornly sticks onto my teeth.</p>
+        <p class="footnote btext">[2] 60491E56: Such choreography from the grey rocks; yet there is something unsettling here, almost as if they are bidding their hellos and adieus at the same time. Could they be CGI-created? They must be—too smooth, too slick to not be.</p>
+        <p class="footnote btext">[3] 6049201B: The light coming through the hole, it both beckons and obscures. As if a surveillance technology is towering above me, and there is no alternative but to be seen and controlled.</p>
+        <p class="footnote btext">[4] 60492162: Could this be the end? Yet again that sneaking suspicion emerges—that everything, the supposed closure, is just an illusion. This contraption might not even let me out—holding me here within its nook and cranny, until it has decided that it’s time.  </p>
+      </div>
+      
+      <br><br>
+      
+      <div id="text-container-second">
+        <p class="text-title btext">My definition of techno-house is a shrimp</p>
+        <p class="btext">By Harry Burke</p>
+        <p class="btext">The cover artwork of Susumu Yokota’s bewitching acid techno album Zen (1994, released under the pseudonym Ebi) features a flat blue cartoon of a shrimp. Different parts of the shrimp are annotated as if they are elements of an electronic drum pattern—hi hat, snare, clap, bass drum, et cetera. Above is the statement:</p>
+        <p class="btext">“my definition of techno-house is a shrimp.”</p>
+        <p class="btext">This dreamlike claim came to mind as Stella Zhong introduced me to her installation. Like Yokota, Zhong makes unlikely connections: in her installation, a pavilion is defined as a potato chip, a levitating disk is described as a pancake, and the gap between two walls is likened to a stubby grain of rice. For Zhong, space is a starchy and playful material.</p>
+        <p class="btext">This logic, along with some of the installation’s points of tension, suggests an artistic engagement with derealization. For one thing, Zhong has labored to negate the gallery by building a large, immersive container. A beach of died sand surrounds this structure. These elements of the installation detach it from its immediate environment, and create a psycho-spatial distancing effect. They subtly displace their viewer.</p>
+        <p class="btext">Further, Zhong’s unwieldy object resists compartmentalization. The installation is by turns a theatrical, architectural, and sculptural proposition. Like a pearl in an oyster, at its center is an intimate, hidden cinema. Lying on the floor, their head upon a firm, angled pillow, visitors can watch a looping, eight-minute-long video. Audio hums from the speakers of a portable projector encased in a sand and epoxy shell. I was struck by the extent to which I encountered this soundscape as a spatial experience. This sensation further recalled acid techno: external space merged with interior feeling.</p>
+        <p class="btext">Derealization can be hard to describe. Playing hard to get, Zhong’s installation seeks to find an aesthetic language for a suspended sensorium. In doing so, it gestures toward a definition of sculpture as haptic—as felt. It fantasizes dissociation as an affect. I’m listening to Zen as I type these words. I’m eating rice with my eyes on my computer screen. The food in my body holds me in my body. Yokota was onto something.</p>
+      </div>
+      
+    </div>
+  </body>
+</html>

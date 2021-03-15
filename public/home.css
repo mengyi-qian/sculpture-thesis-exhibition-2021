@@ -1,0 +1,70 @@
+/* a {cursor: pointer;} */
+
+#corners > div {
+  position: fixed;
+  font-family: oldround4;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  z-index:100;
+  cursor: default;
+}
+#corner1 {
+  top: 6.5vw;
+  transform: rotate(-50deg);
+  left: 6vw;
+}
+#corner2 {
+  top: 6vw;
+  transform: rotate(45deg);
+  right: 4.5vw;
+}
+#corner3 {
+  bottom: 6.5vw;
+  transform: rotate(130deg);
+  right: 6vw;
+}
+#corner4 {
+  bottom: 6vw;
+  transform: rotate(-135deg);
+  left: 4.5vw;
+}
+#top {top: 0px;}
+#bottom {bottom: 0px;}
+#top,#bottom {
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+#left,#right {
+  width: 100vh;
+  width: calc(var(--vh, 1vh) * 100); /* mobile */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+#left {
+  transform-origin: bottom left;
+  transform: rotate(-90deg) translateY(100%);
+  left: 0;
+  bottom: 0;
+}
+#right {
+  transform-origin: bottom right;
+  margin: auto;
+  transform: rotate(90deg) translateY(100%);
+  right: 0;
+  bottom: 0;
+}
+.left-name {padding-left: 80px;}
+.right-name {padding-right: 80px;}
+
+
+@media only screen and (max-width: 600px) {
+  #corners > div {
+    font-size: 18px;
+  }
+  .subtext{
+    font-size: 12px;
+  }
+}

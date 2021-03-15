@@ -1,0 +1,125 @@
+#top {
+  top: -60px;
+  width: 100vw;
+}
+
+#bottom {
+  bottom: -60px;
+  width: 100vw;
+}
+
+#left {
+  transform-origin: bottom left;
+  transform: rotate(-90deg);
+  width: 100vh;
+  width: calc(var(--vh, 1vh) * 100); /* mobile */
+  left: 0px;
+  bottom: 0;
+}
+
+#right {
+  transform-origin: bottom right;
+  transform: rotate(90deg);
+  width: 100vh;
+  width: calc(var(--vh, 1vh) * 100); /* mobile */
+  right: 0px;
+  bottom: 0;
+}
+
+#exit {
+  position: fixed;
+  transform: rotate(-45deg);
+  top: 30px;
+  left: 20px;
+  z-index: 99;
+}
+#text {
+  position: fixed;
+  transform: rotate(-45deg);
+  bottom: 30px;
+  right: 20px;
+  z-index: 99;
+}
+
+#text-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  padding: 5vw;
+  box-sizing: border-box; 
+  top: 0;
+  left: 0;
+/*   display: flex; */
+  flex-flow: column nowrap;
+/*   justify-content: center; */
+  align-items: center;
+  align-content: center;
+  overflow-y: scroll;
+  display: none;
+}
+#text-container-first, #text-container-second {
+  max-width: 640px;
+  margin: 0;
+  padding: 0;
+}
+#text-container-first {
+/*   align-self: flex-start; */
+}
+#text-container-second {
+/*   align-self: flex-end; */
+}
+#text-container-left::-webkit-scrollbar, 
+#text-container-right::-webkit-scrollbar {
+  display: none;
+}
+#text-container-first p,
+#text-container-second p {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1em;
+  line-height: 1.2em;
+  background-color: ghostwhite;
+  position: relative;
+}
+.text-title {
+  font-style: italic;
+}
+sup, sup > * {
+  vertical-align: text-top;
+  line-height: 0;
+  font-size: 15px;
+}
+.comment {
+  display: block;
+  position: absolute;
+  left: 640px;
+  top: 0;
+  width: 400px;
+  font-size: 15px;
+  text-align: left;
+}
+.show-comment {
+  display: none;
+}
+mark:hover + .show-comment {
+  display: inline;
+}
+
+@media only screen and (max-width: 600px) {
+  sup, sup > *, .comment {
+    font-size: 12px;
+  }
+  .line {
+    display: none;
+  }
+  .comment {
+    display: block;
+    position: static;
+    margin-left: 6em;
+    margin-top: 1em;
+    width: 400px;
+    font-size: 12px;
+    text-align: left;
+  }
+}
