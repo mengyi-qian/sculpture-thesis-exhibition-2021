@@ -31,22 +31,23 @@ body {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100); /* mobile */
   pointer-events: none;
-  opacity: 0;
+/*   opacity: 0; */
 }
 .pixel {
   position: absolute;
   width: 1.8px;
   height: 1.8px;
   border-radius: 0.8px;
+  background-color: LightGray;
 }
 #wall {
   position: absolute;
-  margin-top: -60px;
-  margin-left: -60px;
+  margin-top: -50px;
+  margin-left: -50px;
   width: 100vw;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100); /* mobile */
-  border: 60px solid rgba(0,0,0,0);
+  border: 50px solid rgba(0,0,0,0);
 }
 #title {
   position: absolute;

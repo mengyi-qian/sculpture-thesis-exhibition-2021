@@ -1,10 +1,10 @@
 #top {
-  top: -60px;
+  top: -2em;
   width: 100vw;
 }
 
 #bottom {
-  bottom: -60px;
+  bottom: -2em;
   width: 100vw;
 }
 
@@ -13,7 +13,7 @@
   transform: rotate(-90deg);
   width: 100vh;
   width: calc(var(--vh, 1vh) * 100); /* mobile */
-  left: 0px;
+  left: 1em;
   bottom: 0;
 }
 
@@ -22,7 +22,7 @@
   transform: rotate(90deg);
   width: 100vh;
   width: calc(var(--vh, 1vh) * 100); /* mobile */
-  right: 0px;
+  right: 1em;
   bottom: 0;
 }
 
@@ -45,13 +45,15 @@
   position: absolute;
   width: 100vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100); /* mobile */
   padding: 5vw;
+  padding-top: 80px;
+  padding-bottom: 3em;
   box-sizing: border-box; 
   top: 0;
   left: 0;
 /*   display: flex; */
   flex-flow: column nowrap;
-/*   justify-content: center; */
   align-items: center;
   align-content: center;
   overflow-y: scroll;
@@ -61,12 +63,6 @@
   max-width: 640px;
   margin: 0;
   padding: 0;
-}
-#text-container-first {
-/*   align-self: flex-start; */
-}
-#text-container-second {
-/*   align-self: flex-end; */
 }
 #text-container-left::-webkit-scrollbar, 
 #text-container-right::-webkit-scrollbar {
@@ -82,20 +78,29 @@
   background-color: ghostwhite;
   position: relative;
 }
-.text-title {
+.footnote {
+  max-width: 630px;
+}
+p.text-title {
   font-style: italic;
 }
 sup, sup > * {
-  vertical-align: text-top;
+  vertical-align: center;
   line-height: 0;
   font-size: 15px;
+  margin-bottom: 0.5em;
 }
+/* .mark {
+  background-color: yellow;
+  line-height: 0;
+} */
 .comment {
-  display: block;
+  display: inline-block;
   position: absolute;
   left: 640px;
   top: 0;
-  width: 400px;
+  max-width: 300px;
+  width: calc( 50vw - 350px );
   font-size: 15px;
   text-align: left;
 }
@@ -104,6 +109,24 @@ sup, sup > * {
 }
 mark:hover + .show-comment {
   display: inline;
+}
+@media only screen and (max-width: 1080px) {
+  .line {
+    display: none;
+  }
+  .comment {
+    display: block;
+    position: static;
+    margin-left: 22vw;
+    margin-top: 1em;
+    max-width: 400px;
+    width: 65vw;
+    font-size: 15px;
+    text-align: left;
+  }
+  mark:hover + .show-comment {
+    display: inline;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -116,10 +139,14 @@ mark:hover + .show-comment {
   .comment {
     display: block;
     position: static;
-    margin-left: 6em;
+    margin-left: 20vw;
     margin-top: 1em;
-    width: 400px;
+    max-width: 400px;
+    width: 65vw;
     font-size: 12px;
     text-align: left;
+  }
+  mark:hover + .show-comment {
+    display: inline;
   }
 }

@@ -80,15 +80,11 @@ for (let i = 0; i < hoverVideo.length; i++) {
 }
 for (let i = 0; i < entrance.length; i++) {
   entrance[i].addEventListener('mouseenter', () => {
-    if (teaser[i].slice(-4)==="jpeg") {
-      showImage.innerHTML = `<img src=${teaser[i]}>`
-    } else if (teaser[i].slice(-3)==="mp4") {
-      showImage.innerHTML = `
-        <video width="800" playsinline autoplay muted loop>
-          <source src=${teaser[i]}>
-        </video>
-      `
-    }
+    showImage.innerHTML = `
+      <video width="800" playsinline autoplay muted loop>
+        <source src=${teaser[i]}>
+      </video>
+    `
   })
   entrance[i].addEventListener('mouseleave', () => {
     showImage.innerHTML = ''
@@ -159,7 +155,6 @@ function textDecay(words) {
   }
 }
 
-
 // text decay on hover
 // create a span for each word
 let btexts = document.querySelectorAll(".btext")
@@ -169,8 +164,12 @@ for (let btext of btexts) {
 // loop through each word
 let btextWords = document.querySelectorAll(".btext span")
 textDecay(btextWords)
-let statementWords = ''
-
+for (let btextWord of btextWords) {
+  if (btextWord.textContent.length >= 10) {
+    btextWord.style.wordBreak = "breaak-word"
+    btextWord.style.hyphens = "auto"
+  }
+}
 
 // for mobile:
 function windowResize() {
@@ -197,24 +196,27 @@ function windowResize() {
 windowResize() 
 window.onresize = windowResize
 
-
+// toggle show text
 let textButton = document.querySelector('#text')
-let textContainer = document.querySelector('#text-container')
-textContainer.style.display = "none"
-textButton.addEventListener('click', () => {
-  if ( textContainer.style.display === "none" ) {
-    console.log("none")
-    textContainer.style.display = "flex"
-    document.querySelector('#wall').style.opacity = "0"
-    document.querySelector('.center').style.opacity = "0"
-    document.querySelector('#showimage').style.opacity = "0"
-    textButton.textContent = "Close"
-  } else {
-    console.log("flex")
-    textContainer.style.display = "none"
-    document.querySelector('#wall').style.opacity = "1"
-    document.querySelector('.center').style.opacity = "1"
-    document.querySelector('#showimage').style.opacity = "1"
-    textButton.textContent = "Text"
-  }
-})
+if (textButton != undefined) {
+  let textContainer = document.querySelector('#text-container')
+  textContainer.style.display = "none"
+  textButton.addEventListener('click', () => {
+    if ( textContainer.style.display === "none" ) {
+      // console.log("none")
+      textContainer.style.display = "flex"
+      document.querySelector('#wall').style.opacity = "0"
+      document.querySelector('.center').style.opacity = "0"
+      document.querySelector('#showimage').style.opacity = "0"
+      textButton.textContent = "Close"
+    } else {
+      // console.log("flex")
+      textContainer.style.display = "none"
+      document.querySelector('#wall').style.opacity = "1"
+      document.querySelector('.center').style.opacity = "1"
+      document.querySelector('#showimage').style.opacity = "1"
+      textButton.textContent = "Text"
+    }
+  })
+}
+  

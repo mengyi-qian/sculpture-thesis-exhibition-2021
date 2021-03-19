@@ -20,10 +20,10 @@
         
         // floating background
         body.addEventListener('mousemove', (event) => {
-          bg.style.transform = `translate(${showCoords(event,60)[0]}px, ${showCoords(event,60)[1]}px)`
+          bg.style.transform = `translate(${showCoords(event,50)[0]}px, ${showCoords(event,50)[1]}px)`
         })
         body.addEventListener('touchmove', (event) => {
-          bg.style.transform = `translate(${touchCoords(event,60)[0]}px, ${touchCoords(event,60)[1]}px)`
+          bg.style.transform = `translate(${touchCoords(event,50)[0]}px, ${touchCoords(event,50)[1]}px)`
         })
         
         // add noises on click
@@ -77,20 +77,23 @@
         <a>yolk</a>
         <a class="hoverVideo">[1]</a>
       </nav>
+      <p class="center name" id="stella">Stella Zhong</p>
     </div>
     
     <a id="exit" href="../">Exit</a>
     <a id="text">Text</a>
-    <p class="center name" id="stella">Stella Zhong</p>
     <div id="noise"></div>
     <div id="showimage"></div>
+    
     
     <div id="text-container">
       <div id="text-container-first">
         <p class="text-title btext">A Log: StarchChip Enterprise</p>
+        <p class="btext">By Adela Kim</p>
+        <br>
         <p>
-          <span class="btext">0:44: Rover and hover. Copy from Draco.</span>
-          <mark class="btext">&nbsp;</mark>
+          <span class="btext">0:44: Rover and hover. Copy from</span>
+          <mark class="btext"> Draco.</mark>
           <span class="show-comment">
             <span class="line">--------------------</span>
             <span class="comment">OMG, our space is being infiltrated by an unknown entity! Look how weird it is, it’s so, like, brown-ish and flat. It’s so creepy! TFW you feel like you’re being stalked.</span>
@@ -116,7 +119,7 @@
         </p>
         <p>
           <span class="btext">4:18: Find Splinter </span>
-          <mark class="btext">again</mark>.
+          <mark class="btext">again.</mark>
           <span class="show-comment">
             <span class="line">-------------------------------------</span>
             <span class="comment">Oh look! It’s standing still again, but now…wait a moment, it just turned into a mirror! We can see ourselves. Lol. We stan. Yes, no, I’m being serious. We stan ourselves.</span>
@@ -139,11 +142,12 @@
         <p class="footnote btext">[4] 60492162: Could this be the end? Yet again that sneaking suspicion emerges—that everything, the supposed closure, is just an illusion. This contraption might not even let me out—holding me here within its nook and cranny, until it has decided that it’s time.  </p>
       </div>
       
-      <br><br>
+      <br><br><br><br>
       
       <div id="text-container-second">
         <p class="text-title btext">My definition of techno-house is a shrimp</p>
         <p class="btext">By Harry Burke</p>
+        <br>
         <p class="btext">The cover artwork of Susumu Yokota’s bewitching acid techno album Zen (1994, released under the pseudonym Ebi) features a flat blue cartoon of a shrimp. Different parts of the shrimp are annotated as if they are elements of an electronic drum pattern—hi hat, snare, clap, bass drum, et cetera. Above is the statement:</p>
         <p class="btext">“my definition of techno-house is a shrimp.”</p>
         <p class="btext">This dreamlike claim came to mind as Stella Zhong introduced me to her installation. Like Yokota, Zhong makes unlikely connections: in her installation, a pavilion is defined as a potato chip, a levitating disk is described as a pancake, and the gap between two walls is likened to a stubby grain of rice. For Zhong, space is a starchy and playful material.</p>

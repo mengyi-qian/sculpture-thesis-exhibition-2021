@@ -15,13 +15,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-C7srjHiVG3Ey1nR6d511dtDkCEjxuN9W1HWAEjGq8kpcwmNM6JJkpC0xvabM7BXTG2wDq8Eu33iH9aQKa7IvLQ==
-  /@types/node/14.14.33:
+  /@types/node/14.14.35:
     dev: false
     resolution:
-      integrity: sha512-oJqcTrgPUF29oUP8AsUqbXGJNuPutsetaa9kTQAQce5Lx5dTYWV02ScBiT/k1BX/Z7pKeqedmvp39Wu4zR7N7g==
+      integrity: sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
   /accepts/1.3.7:
     dependencies:
-      mime-types: 2.1.25
+      mime-types: 2.1.29
       negotiator: 0.6.2
     dev: false
     engines:
@@ -197,7 +197,7 @@ packages:
       on-finished: 2.3.0
       parseurl: 1.3.3
       path-to-regexp: 0.1.7
-      proxy-addr: 2.0.5
+      proxy-addr: 2.0.6
       qs: 6.7.0
       range-parser: 1.2.1
       safe-buffer: 5.1.2
@@ -283,12 +283,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
-  /ipaddr.js/1.9.0:
+  /ipaddr.js/1.9.1:
     dev: false
     engines:
       node: '>= 0.10'
     resolution:
-      integrity: sha512-M4Sjn6N/+O6/IXSJseKqHoFc+5FdGJ22sXqnjTpdZweHK64MzEPAyQZyEU3R/KRv2GLoa7nNtg/C2Ev6m7z+eA==
+      integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==
   /is-promise/2.2.2:
     dev: false
     resolution:
@@ -325,20 +325,20 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
-  /mime-db/1.42.0:
+  /mime-db/1.46.0:
     dev: false
     engines:
       node: '>= 0.6'
     resolution:
-      integrity: sha512-UbfJCR4UAVRNgMpfImz05smAXK7+c+ZntjaA26ANtkXLlOe947Aag5zdIcKQULAiF9Cq4WxBi9jUs5zkA84bYQ==
-  /mime-types/2.1.25:
+      integrity: sha512-svXaP8UQRZ5K7or+ZmfNhg2xX3yKDMUzqadsSqi4NCH/KomcH75MAMYAGVlvXn4+b/xOPhS3I2uHKRUzvjY7BQ==
+  /mime-types/2.1.29:
     dependencies:
-      mime-db: 1.42.0
+      mime-db: 1.46.0
     dev: false
     engines:
       node: '>= 0.6'
     resolution:
-      integrity: sha512-5KhStqB5xpTAeGqKBAMgwaYMnQik7teQN4IAzC7npDv6kzeU6prfkR67bc87J1kWMPGkoaZSq1npmexMgkmEVg==
+      integrity: sha512-Y/jMt/S5sR9OaqteJtslsFZKWOIIqMACsJSiHghlCAyhf7jfVYjKBmLiX8OgpWeW+fjJ2b+Az69aPFPkUOY6xQ==
   /mime/1.6.0:
     dev: false
     engines:
@@ -394,15 +394,15 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
-  /proxy-addr/2.0.5:
+  /proxy-addr/2.0.6:
     dependencies:
       forwarded: 0.1.2
-      ipaddr.js: 1.9.0
+      ipaddr.js: 1.9.1
     dev: false
     engines:
       node: '>= 0.10'
     resolution:
-      integrity: sha512-t/7RxHXPH6cJtP0pRG6smSr9QJidhB+3kXu0KgXnbGYMgzEnUxRQ4/LDdfOwZEMyIh3/xHb8PX3t+lfL9z+YVQ==
+      integrity: sha512-dh/frvCBVmSsDYzw6n926jv974gddhkFPfiN8hPOi30Wax25QZyZEGveluCgliBnqmuM+UJmBErbAUFIoDbjOw==
   /qs/6.7.0:
     dev: false
     engines:
@@ -487,7 +487,7 @@ packages:
     dependencies:
       '@types/cookie': 0.4.0
       '@types/cors': 2.8.10
-      '@types/node': 14.14.33
+      '@types/node': 14.14.35
       accepts: 1.3.7
       base64id: 2.0.0
       debug: 4.3.1
@@ -520,7 +520,7 @@ packages:
   /type-is/1.6.18:
     dependencies:
       media-typer: 0.3.0
-      mime-types: 2.1.25
+      mime-types: 2.1.29
     dev: false
     engines:
       node: '>= 0.6'
@@ -559,4 +559,4 @@ shrinkwrapVersion: 3
 specifiers:
   express: ^4.17.1
   lowdb: ^1.0.0
-  socket.io: ^3.1.1
+  socket.io: ^3.1.2

@@ -42,8 +42,9 @@ const getNoises = (noises, n, xPosition, yPosition, noiseDepth) => {
   for (let i = 0; i < n; i++) {
     let x = noises[i][xPosition]
     let y = noises[i][yPosition]
-    let depth = noises[i][noiseDepth]
-    pixels += `<div class="pixel" style="top:${y}px; left:${x}px; background-color:rgba(${depth},${depth},${depth},1)"></div>`
+    // let depth = noises[i][noiseDepth]
+    // pixels += `<div class="pixel" style="top:${y}px; left:${x}px; background-color:rgba(${depth},${depth},${depth},1)"></div>`
+    pixels += `<div class="pixel" style="top:${y}px; left:${x}px;"></div>`
   }
   return pixels
 }
