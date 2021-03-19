@@ -6,7 +6,7 @@
 const express = require("express")
 const app = express()
 let http = require('http').createServer(app)
-let port = process.env.port || 3000
+let port = process.env.PORT || 3000
 let io = require('socket.io')(http)
 const low = require('lowdb')
 
