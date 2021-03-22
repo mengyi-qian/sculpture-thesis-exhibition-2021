@@ -71,12 +71,12 @@
 #text-container-first p,
 #text-container-second p {
   text-align: left;
-  padding: 0;
-  margin: 0;
   margin-bottom: 1em;
   line-height: 1.2em;
   background-color: ghostwhite;
   position: relative;
+/*   word-break: normal; */
+/*   hyphens: auto; */
 }
 .footnote {
   max-width: 630px;

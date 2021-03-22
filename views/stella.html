@@ -26,6 +26,26 @@
           bg.style.transform = `translate(${touchCoords(event,50)[0]}px, ${touchCoords(event,50)[1]}px)`
         })
         
+        
+        // console.log(window.innerWidth)
+        if ( window.innerWidth > 600 ) {
+          // create a span for each word
+          let btexts = document.querySelectorAll(".btext")
+          for (let btext of btexts) {
+            btext.innerHTML = btext.textContent.replace(/\b(\w+)\b/g, `<span style="font-family:oldround0">$1</span>`)
+          }
+          // Text degradation
+          let btextWords = document.querySelectorAll(".btext span")
+          textDecay(btextWords)
+          // Set word break
+          for (let btextWord of btextWords) {
+            if (btextWord.textContent.length >= 10) {
+              btextWord.style.wordBreak = "break-word"
+              btextWord.style.hyphens = "auto"
+            }
+          }
+        }
+        
         // add noises on click
         body.addEventListener('click', (event) => {
           let click = getClick(event)
@@ -83,6 +103,18 @@
     <a id="exit" href="../">Exit</a>
     <a id="text">Text</a>
     <div id="noise"></div>
+    <div id="loading-fonts">
+      <span style="font-family: oldround0;">0</span>
+      <span style="font-family: oldround1;">1</span>
+      <span style="font-family: oldround2;">2</span>
+      <span style="font-family: oldround3;">3</span>
+      <span style="font-family: oldround4;">4</span>
+      <span style="font-family: oldround5;">5</span>
+      <span style="font-family: oldround6;">6</span>
+      <span style="font-family: oldround7;">7</span>
+      <span style="font-family: oldround8;">8</span>
+      <span style="font-family: oldround9;">9</span>
+    </div>
     <div id="showimage"></div>
     
     

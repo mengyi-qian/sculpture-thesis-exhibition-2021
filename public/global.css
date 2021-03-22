@@ -20,11 +20,6 @@ body {
   position: relative;
   background-color: ghostWhite;
 }
-.btext span {
-  line-height: 0;
-  margin: 0;
-  padding: 0;
-}
 #noise{
   position: fixed;
   width: 100vw;
@@ -73,6 +68,11 @@ body {
 div.btext {
   line-height: 1.2em;
 }
+.btext span {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
 nav {
   position: absolute;
 }
@@ -104,6 +104,16 @@ a:hover,.exit:hover,.hoverImg:hover,.hoverVideo:hover {
 }
 .hoverImg,.hoverVideo {
   cursor: pointer;
+}
+
+#loading-fonts {
+  pointer-events: none;
+  position: absolute;
+  color: rgba(255,255,255,0);
+  z-index: -99;
+}
+#loading-fonts span {
+  color: rgba(255,255,255,0);
 }
 
 

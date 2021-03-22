@@ -98,7 +98,7 @@ for (let i = 0; i < corners.length; i++) {
 }
 
 
-
+// text degradation on hover
 function textDecay(words) {
   for (let i = 0; i < words.length; i++) {
     // set initial hover state
@@ -122,7 +122,20 @@ function textDecay(words) {
         }
       },500);
     })
+    // for desktop
+    words[i].addEventListener('mouseleave', () => {
+      hover = false
+    })
+  }
+}
 
+// text degradation on touch
+function textDecayMobile(words) {
+  for (let i = 0; i < words.length; i++) {
+    // set initial hover state
+    let hover = false
+    // get font weight
+    let weight = words[i].style.fontFamily.slice(-1)
     // for touchscreen: when touch on the word
     words[i].addEventListener('touchstart', (event) => {
       event.preventDefault()
@@ -141,12 +154,6 @@ function textDecay(words) {
         }
       },500);
     })
-
-    // for desktop
-    words[i].addEventListener('mouseleave', () => {
-      hover = false
-    })
-
     // for touchscreen
     words[i].addEventListener('touchend', (event) => {
       event.preventDefault()
@@ -155,21 +162,20 @@ function textDecay(words) {
   }
 }
 
-// text decay on hover
-// create a span for each word
-let btexts = document.querySelectorAll(".btext")
-for (let btext of btexts) {
-  btext.innerHTML = btext.textContent.replace(/\b(\w+)\b/g, `<span style="font-family:oldround0">$1</span>`)
-}
-// loop through each word
-let btextWords = document.querySelectorAll(".btext span")
-textDecay(btextWords)
-for (let btextWord of btextWords) {
-  if (btextWord.textContent.length >= 10) {
-    btextWord.style.wordBreak = "breaak-word"
-    btextWord.style.hyphens = "auto"
-  }
-}
+// // create a span for each word
+// let btexts = document.querySelectorAll(".btext")
+// for (let btext of btexts) {
+//   btext.innerHTML = btext.textContent.replace(/\b(\w+)\b/g, `<span style="font-family:oldround0">$1</span>`)
+// }
+// // loop through each word
+// let btextWords = document.querySelectorAll(".btext span")
+// textDecay(btextWords)
+// for (let btextWord of btextWords) {
+//   if (btextWord.textContent.length >= 10) {
+//     btextWord.style.wordBreak = "break-word"
+//     btextWord.style.hyphens = "auto"
+//   }
+// }
 
 // for mobile:
 function windowResize() {
