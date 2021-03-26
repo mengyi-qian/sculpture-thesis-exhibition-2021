@@ -1,46 +1,60 @@
-#top {
-  top: -2em;
-  width: 100vw;
+#top {top: -2em;}
+#bottom {bottom: -2em;}
+#top,#bottom {
+  width: 90vw;
+  left: 5vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
 }
-
-#bottom {
-  bottom: -2em;
-  width: 100vw;
+#left,#right {
+  bottom: 5vh;
+  bottom: calc(var(--vh, 1vh) * 5); /* mobile */
+  width: 90vh;
+  width: calc(var(--vh, 1vh) * 90); /* mobile */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
 }
-
 #left {
   transform-origin: bottom left;
   transform: rotate(-90deg);
-  width: 100vh;
-  width: calc(var(--vh, 1vh) * 100); /* mobile */
   left: 1em;
-  bottom: 0;
 }
-
 #right {
   transform-origin: bottom right;
   transform: rotate(90deg);
-  width: 100vh;
-  width: calc(var(--vh, 1vh) * 100); /* mobile */
   right: 1em;
-  bottom: 0;
 }
-
 #exit {
-  position: fixed;
   transform: rotate(-45deg);
   top: 30px;
   left: 20px;
-  z-index: 99;
 }
-#text {
-  position: fixed;
+#text-right {
   transform: rotate(-45deg);
   bottom: 30px;
   right: 20px;
+}
+#text-left {
+  transform: rotate(45deg);
+  bottom: 30px;
+  left: 20px;
+}
+#text-close {
+  transform: rotate(45deg);
+  top: 30px;
+  right: 20px;
+  display: none;
+}
+#exit,#text-right,#text-left,#text-close {
+  position: fixed;
   z-index: 99;
 }
-
+.center p {
+  text-align: left;
+  margin-bottom: 0.5em;
+}
 #text-container {
   position: absolute;
   width: 100vw;
@@ -59,17 +73,14 @@
   overflow-y: scroll;
   display: none;
 }
-#text-container-first, #text-container-second {
+#text-container-left, #text-container-right {
   max-width: 640px;
   margin: 0;
   padding: 0;
-}
-#text-container-left::-webkit-scrollbar, 
-#text-container-right::-webkit-scrollbar {
   display: none;
 }
-#text-container-first p,
-#text-container-second p {
+#text-container-left p,
+#text-container-right p {
   text-align: left;
   margin-bottom: 1em;
   line-height: 1.2em;
@@ -90,10 +101,9 @@ sup, sup > * {
   font-size: 15px;
   margin-bottom: 0.5em;
 }
-/* .mark {
-  background-color: yellow;
-  line-height: 0;
-} */
+.footnote a {
+  text-decoration: underline;
+}
 .comment {
   display: inline-block;
   position: absolute;
@@ -110,6 +120,12 @@ sup, sup > * {
 mark:hover + .show-comment {
   display: inline;
 }
+
+.wider {
+  max-width: 800px; !important
+}
+
+
 @media only screen and (max-width: 1080px) {
   .line {
     display: none;

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Saejun Kim</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/rooms.css">
+    <script src="/script.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/functions.js"></script>
+    <script>
+      var socket = io()
+      
+      window.onload = async () => {
+        let body = document.querySelector('body')
+        let bg = document.querySelector('#wall')
+        let noise = document.querySelector("#noise")
+        
+        // floating background
+        body.addEventListener('mousemove', (event) => {
+          bg.style.transform = `translate(${showCoords(event,50)[0]}px, ${showCoords(event,50)[1]}px)`
+        })
+        body.addEventListener('touchmove', (event) => {
+          bg.style.transform = `translate(${touchCoords(event,50)[0]}px, ${touchCoords(event,50)[1]}px)`
+        })
+        
+        toggleShowText()
+        
+        // console.log(window.innerWidth)
+        if ( window.innerWidth > 600 ) {
+          // create a span for each word
+          let btexts = document.querySelectorAll(".btext")
+          for (let btext of btexts) {
+            btext.innerHTML = btext.textContent.replace(/\b(\w+)\b/g, `<span style="font-family:oldround0">$1</span>`)
+          }
+          // Text degradation
+          let btextWords = document.querySelectorAll(".btext span")
+          textDecay(btextWords)
+          // Set word break
+          for (let btextWord of btextWords) {
+            if (btextWord.textContent.length >= 10) {
+              btextWord.style.wordBreak = "break-word"
+              btextWord.style.hyphens = "auto"
+            }
+          }
+        }
+        
+        // add noises on click
+        body.addEventListener('click', (event) => {
+          let click = getClick(event)
+          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px;)"></div>`
+          socket.emit('new click', click)
+        })
+        
+        // get noises on fresh
+        socket.on('refresh data', (noises)=>{
+          let n = noises.length
+          noise.innerHTML = getNoises(noises, n, "x", "y")
+        })     
+      }
+    </script>
+  </head>  
+  <body>
+    <div id="wall">
+      <nav id="top">
+        <a class="hoverImg">[video]</a>
+        <a class="hoverImg">[1]</a>
+        <a class="hoverImg">[2]</a>
+        <a class="hoverImg">[3]</a>
+        <a class="hoverImg">[4]</a>
+        <a class="hoverImg">[5]</a>
+      </nav>
+      <nav id="right">
+        <a class="hoverImg">[6]</a>
+        <a class="hoverImg">[7]</a>
+        <a class="hoverImg">[8]</a>
+      </nav>
+      <nav id="bottom">
+        <a class="hoverImg">[13]</a>
+        <a class="hoverImg">[12]</a>
+        <a class="hoverImg">[11]</a>
+        <a class="hoverImg">[10]</a>
+        <a class="hoverImg">[9]</a>
+      </nav>
+      <nav id="left">
+        <a class="hoverImg">[14]</a>
+        <a class="hoverImg">[15]</a>
+        <a class="hoverImg">[16]</a>
+        <a class="hoverImg">[17]</a>
+      </nav>
+      <div class="center name" id="saejun">
+        
+        <p>Accumulated Loss</p>
+        <p class="footnote">
+          2021
+        </p>
+        <p class="footnote">
+          Dimensions variable
+        </p>
+        <p class="footnote">
+          Water, carbon dust, carbon based ink, plastic pallets, water soluble cast, stony-creek granite, concrete, aluminum, steel, and freezer.
+        </p>
+        
+        <br><br>
+        <p>Saejun Kim</p>
+      </div>
+    </div>
+    
+    <a id="exit" href="../">Exit</a>
+<!--     <a id="text-right">Text</a> -->
+<!--     <a id="text-left">Text</a> -->
+    <a id="text-close">Close</a>
+    <div id="noise"></div>
+    <div id="loading-fonts">
+      <span style="font-family: oldround0;">0</span>
+      <span style="font-family: oldround1;">1</span>
+      <span style="font-family: oldround2;">2</span>
+      <span style="font-family: oldround3;">3</span>
+      <span style="font-family: oldround4;">4</span>
+      <span style="font-family: oldround5;">5</span>
+      <span style="font-family: oldround6;">6</span>
+      <span style="font-family: oldround7;">7</span>
+      <span style="font-family: oldround8;">8</span>
+      <span style="font-family: oldround9;">9</span>
+    </div>
+    <div id="showimage"></div>
+    
+  </body>
+</html>

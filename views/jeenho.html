@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jeenho Seo</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/rooms.css">
+    <script src="/script.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/functions.js"></script>
+    <script>
+      var socket = io()
+      
+      window.onload = async () => {
+        let body = document.querySelector('body')
+        let bg = document.querySelector('#wall')
+        let noise = document.querySelector("#noise")
+        
+        // floating background
+        body.addEventListener('mousemove', (event) => {
+          bg.style.transform = `translate(${showCoords(event,50)[0]}px, ${showCoords(event,50)[1]}px)`
+        })
+        body.addEventListener('touchmove', (event) => {
+          bg.style.transform = `translate(${touchCoords(event,50)[0]}px, ${touchCoords(event,50)[1]}px)`
+        })
+        
+        toggleShowText()
+        
+        // console.log(window.innerWidth)
+        if ( window.innerWidth > 600 ) {
+          // create a span for each word
+          let btexts = document.querySelectorAll(".btext")
+          for (let btext of btexts) {
+            btext.innerHTML = btext.textContent.replace(/\b(\w+)\b/g, `<span style="font-family:oldround0">$1</span>`)
+          }
+          // Text degradation
+          let btextWords = document.querySelectorAll(".btext span")
+          textDecay(btextWords)
+          // Set word break
+          for (let btextWord of btextWords) {
+            if (btextWord.textContent.length >= 10) {
+              btextWord.style.wordBreak = "break-word"
+              btextWord.style.hyphens = "auto"
+            }
+          }
+        }
+        
+        // add noises on click
+        body.addEventListener('click', (event) => {
+          let click = getClick(event)
+          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px;)"></div>`
+          socket.emit('new click', click)
+        })
+        
+        // get noises on fresh
+        socket.on('refresh data', (noises)=>{
+          let n = noises.length
+          noise.innerHTML = getNoises(noises, n, "x", "y")
+        })      
+      }
+    </script>
+  </head>  
+  <body>
+    <div id="wall">
+      <nav id="top">
+        <a class="hoverImg">[video]</a>
+        <a class="hoverImg">[1]</a>
+        <a class="hoverImg">[2]</a>
+        <a class="hoverImg">[3]</a>
+      </nav>
+      <nav id="right">
+        <a class="hoverImg">[4]</a>
+        <a class="hoverImg">[5]</a>
+        <a class="hoverImg">[6]</a>
+      </nav>
+      <nav id="bottom">
+        <a class="hoverImg">[9]</a>
+        <a class="hoverImg">[8]</a>
+        <a class="hoverImg">[7]</a>
+      </nav>
+      <nav id="left">
+        <a class="hoverImg">[10]</a>
+        <a class="hoverImg">[11]</a>
+      </nav>
+      <div class="center name" id="jeenho">
+        
+        <p>[1]-[9] Configure(configuration)</p>
+        <p class="footnote">
+          2021
+        </p>
+        <p class="footnote">
+          Dimension variable(84 x 288 x 48 in), two main structures installed at 18, 10ft above the ground.
+        </p>
+        <p class="footnote">
+          Wood, steel, threaded rod, plexiglass, used clothings, Industrial textile shredder made by Filamaker, E-drive 60Hz motor, VFD(Variable-frequency drive), 10/4 AWG SOOW bulk wire cord, electric/legacy relay, momentary push button switch, stop push button switch, motion sensor.
+        </p>
+        <br>
+        
+        <p>[10]-[11] “my dream your dream, your dream my dream”</p>
+        <p class="footnote">
+          2021
+        </p>
+        <p class="footnote">
+          12 x 2 x 3 in
+        </p>
+        <p class="footnote">
+          Shredded Nike running shoe, resin
+        </p>
+        
+        <br><br>
+        <p>Jeenho Seo</p>
+      </div>
+    </div>
+    
+    <a id="exit" href="../">Exit</a>
+    <a id="text-right">Text</a>
+<!--     <a id="text-left">Text</a> -->
+    <a id="text-close">Close</a>
+    <div id="noise"></div>
+    <div id="loading-fonts">
+      <span style="font-family: oldround0;">0</span>
+      <span style="font-family: oldround1;">1</span>
+      <span style="font-family: oldround2;">2</span>
+      <span style="font-family: oldround3;">3</span>
+      <span style="font-family: oldround4;">4</span>
+      <span style="font-family: oldround5;">5</span>
+      <span style="font-family: oldround6;">6</span>
+      <span style="font-family: oldround7;">7</span>
+      <span style="font-family: oldround8;">8</span>
+      <span style="font-family: oldround9;">9</span>
+    </div>
+    <div id="showimage"></div>
+    
+    
+    <div id="text-container">      
+      
+      <div id="text-container-right">
+        
+        <p>
+          <span class="btext">Arriving at an unfamiliar place, a newcomer experiences a sense of disorientation. Strangers’ eyes dissect what is visible on the alien body. One’s adornments mediate between one’s sense of self and what one is perceived to be. Clothing, as a second skin, fulfills a number of roles in this dynamic. It acts as a protective layer, shielding the body and its interior from the outside. It serves as an interface, making visible what is hidden within. As an enveloping skin, clothing is both capable of insulation and expression. Yet its fragility also makes it vulnerable to potential physical or social violence. Anne Cheng has written that skin is “by nature a medium of transition and doubleness”; it behaves as a “safe encasement”</span><sup class="btext">1</sup> <span class="btext">as well as suggests “the imminent threat of tearing, flaying, and displacement.” Clothing is an extension of the self: it is a home we take with us, one that is susceptible to exterior pressures.</span>
+        </p>
+        
+        <p>
+          <span class="btext">Jeenho Seo finds in clothing a critical locus of exchange between wearer and viewer. In his work </span><i class="btext">configuration</i><span class="btext">, a massive reel, reminiscent of warping reels used in weaving, hangs from the ceiling. The reel holds a spool of clothing that feeds down into an industrial shredder suspended several feet from the ground. The viewer’s movement activates the shredder: to move around the work is to set into motion a process that converts finished garment into refuse. Yet the result of this maceration is as beautiful as it is shocking: the tatters that emerge from the shredder’s maw are at once rags and expressive ribbons. Beneath, the accumulating scrapheap is a constellation of color, the brilliant result of a volatile encounter.</span>
+        </p>
+        
+        <p>
+          <span class="btext">The apparatus invokes both destruction and creation. In place of thread, clothing serves as the raw material of identity. But identity is not the product of a singular self: it is always intersubjective, constituted by one’s interactions with others. It is here, in the air, at this precarious intersection between self and other, that this loom of unmaking operates, taking articles of personhood and subjecting them to the viewer’s gaze. Such an interaction is inherently hazardous, ungovernable, and transformational. It recalls the destructive acts of Neo-Dadaists of the 1960s and 70s, encapsulated by the injunction of the Groupe de Recherche d’Art Visuel: “No not participating / No not touching / No not breaking.”</span><sup class="btext">2</sup> <span class="btext">Fundamental to these artists’ iconoclastic acts were an embrace of ephemerality and a belief in destruction as a potentially liberating event.</span>
+        </p>
+        
+        <p class="btext">
+          In Seo’s work, something is being simultaneously made and unmade. A shaped identity is violated, converted into raw material. There is no not interacting, no not transfiguring in and with this piece. Having lived in three different continents, Seo, a peripatetic artist, asks us to consider identity as a continual process of transition. To him, the act of shredding is both a painful shedding and an unforeseeable reconfiguration. Such a process is both coercive and freeing, both corrosive and constructive.
+        </p>
+        
+        <p class="btext">
+          On the move, the self breaks down and reconstitutes itself with found fragments. Perched on a pedestal nearby, a small sculpture by Seo suggests the emergence of something new. It is the top of a shoe cast in resin: it looks like a crustacean in the process of molting, exposing its soft, translucent shell, vulnerable and raw, scuttling away.
+        </p>
+        
+        <p class="btext">
+          (Text by Kevin Hong)
+        </p>
+        
+        <p>----------------</p>
+        
+        <p class="footnote">
+          <span class="btext">[1] Anne Anlin Cheng,</span> <i class="btext">Second Skin: Josephine Baker and the Modern Surface</i> <span class="btext">(New York: Oxford University Press, 2011), 28.</span>
+        </p>
+        <p class="footnote">
+          <span class="btext">[2] Groupe de Recherche d’Art Visuel, “Assez de mystifications,” in</span> <i class="btext">3</i><sup class="btext">e</sup> <i class="btext">Biennale de Paris</i><span class="btext">, exhibition catalogue (Paris: Musée d’art Modern de la Ville de Paris, 1963), 164-8. Quoted in Dario Gamboni,</span> <i class="btext">The Destruction of Art: Iconoclasm and Vandalism since the French Revolution</i> <span class="btext">(London: Reaktion Books, 1997), 270.</span>
+        </p>
+
+      </div>
+      
+    </div>
+  </body>
+</html>

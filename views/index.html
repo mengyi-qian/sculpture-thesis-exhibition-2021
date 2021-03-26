@@ -21,10 +21,10 @@
         
         // floating background
         body.addEventListener('mousemove', (event) => {
-          bg.style.transform = `translate(${showCoords(event,30)[0]}px, ${showCoords(event,30)[1]}px)`
+          bg.style.transform = `translate(${showCoords(event,50)[0]}px, ${showCoords(event,50)[1]}px)`
         })
         body.addEventListener('touchmove', (event) => {
-          bg.style.transform = `translate(${touchCoords(event,30)[0]}px, ${touchCoords(event,30)[1]}px)`
+          bg.style.transform = `translate(${touchCoords(event,50)[0]}px, ${touchCoords(event,50)[1]}px)`
         })
         
         // create a span for each word
@@ -40,16 +40,16 @@
         // add noises on click
         body.addEventListener('click', (event) => {
           let click = getClick(event)
-          console.log(click)          
-          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px; background-color:rgba(${click.depth},${click.depth},${click.depth},1)"></div>`
+          // console.log(click)          
+          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px;)"></div>`
           socket.emit('new click', click)
         })
         
         // get noises on fresh
         socket.on('refresh data', (noises)=>{
           let n = noises.length
-          noise.innerHTML = getNoises(noises, n, "x", "y", "depth")
-        })         
+          noise.innerHTML = getNoises(noises, n, "x", "y")
+        })
       }
     </script>
     
@@ -61,8 +61,7 @@
         <div class="btext">Yale School Of Art</div>
         <div class="btext">MFA Sculpture Thesis Exhibition</div>
         <div class="btext">March 22 - 28, 2021</div>
-        <br>
-        <div class="btext footnote">Online Exhibition Goes Live on March 25</div>
+<!--         <br><div class="btext footnote">Online Exhibition Goes Live on March 26</div> -->
       </div>
     </div>
 
@@ -74,18 +73,18 @@
     </div>
 
     <nav id="top">
-      <a class="entrance left-name">Sae Jun Kim</a>
-      <a class="entrance right-name">Armando Cortes</a>
+      <a class="entrance left-name" href="/saejun">Saejun Kim</a>
+      <a class="entrance right-name" href="/armando">Armando Cortés</a>
     </nav>
     <nav id="right">
-      <a class="entrance">Jeenho Seo</a>
+      <a class="entrance" href="/jeenho">Jeenho Seo</a>
     </nav>
     <nav id="bottom">
-      <a class="entrance left-name">Freddy Villalobos</a>
-      <a class="entrance right-name"> Hyeree Ro</a>
+      <a class="entrance left-name" href="/freddy">Freddy Villalobos</a>
+      <a class="entrance right-name" href="/hyeree">Hyeree Ro</a>
     </nav>
     <nav id="left">
-      <a class="entrance">Stella Zhong</a>
+      <a class="entrance" href="/stella">Stella Zhong</a>
     </nav>
     
     <div id="noise"></div>
@@ -101,7 +100,7 @@
       <span style="font-family: oldround8;">8</span>
       <span style="font-family: oldround9;">9</span>
     </div>
-    <div id="showimage"></div>
+    <div id="showimage" style="pointer-events: none;"></div>
     
 
   </body>

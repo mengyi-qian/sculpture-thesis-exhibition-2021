@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Freddy Villalobos</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/rooms.css">
+    <script src="/script.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/functions.js"></script>
+    <script>
+      var socket = io()
+      
+      window.onload = async () => {
+        let body = document.querySelector('body')
+        let bg = document.querySelector('#wall')
+        let noise = document.querySelector("#noise")
+        
+        // floating background
+        body.addEventListener('mousemove', (event) => {
+          bg.style.transform = `translate(${showCoords(event,50)[0]}px, ${showCoords(event,50)[1]}px)`
+        })
+        body.addEventListener('touchmove', (event) => {
+          bg.style.transform = `translate(${touchCoords(event,50)[0]}px, ${touchCoords(event,50)[1]}px)`
+        })
+        
+        toggleShowText()
+        
+        // console.log(window.innerWidth)
+        if ( window.innerWidth > 600 ) {
+          // create a span for each word
+          let btexts = document.querySelectorAll(".btext")
+          for (let btext of btexts) {
+            btext.innerHTML = btext.textContent.replace(/\b(\w+)\b/g, `<span style="font-family:oldround0">$1</span>`)
+          }
+          // Text degradation
+          let btextWords = document.querySelectorAll(".btext span")
+          textDecay(btextWords)
+          // Set word break
+          for (let btextWord of btextWords) {
+            if (btextWord.textContent.length >= 10) {
+              btextWord.style.wordBreak = "break-word"
+              btextWord.style.hyphens = "auto"
+            }
+          }
+        }
+        
+        // add noises on click
+        body.addEventListener('click', (event) => {
+          let click = getClick(event)
+          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px;)"></div>`
+          socket.emit('new click', click)
+        })
+        
+        // get noises on fresh
+        socket.on('refresh data', (noises)=>{
+          let n = noises.length
+          noise.innerHTML = getNoises(noises, n, "x", "y")
+        })        
+      }
+    </script>
+  </head>  
+  <body>
+    <div id="wall">
+      <nav id="top">
+        <a class="hoverImg">[video]</a>
+        <a class="hoverImg">[1]</a>
+        <a class="hoverImg">[2]</a>
+        <a class="hoverImg">[3]</a>
+        <a class="hoverImg">[4]</a>
+        <a class="hoverImg">[5]</a>
+        <a class="hoverImg">[6]</a>
+        <a class="hoverImg">[7]</a>
+        <a class="hoverImg">[8]</a>
+      </nav>
+      <nav id="right">
+        <a class="hoverImg">[9]</a>
+        <a class="hoverImg">[10]</a>
+        <a class="hoverImg">[11]</a>
+        <a class="hoverImg">[12]</a>
+        <a class="hoverImg">[13]</a>
+      </nav>
+      <nav id="bottom">
+        <a class="hoverImg">[19]</a>
+        <a class="hoverImg">[18]</a>
+        <a class="hoverImg">[17]</a>
+        <a class="hoverImg">[16]</a>
+        <a class="hoverImg">[15]</a>
+        <a class="hoverImg">[14]</a>
+      </nav>
+      <nav id="left">
+        <a class="hoverImg">[20]</a>
+        <a class="hoverImg">[21]</a>
+        <a class="hoverImg">[22]</a>
+      </nav>
+      <div class="center name" id="freddy">
+        
+        <p>I seek, I seek and can't find but a dream desublimated</p>
+        <p class="footnote">
+          2021
+        </p>
+        <p class="footnote">
+          Dimensions variable
+        </p>
+        <br>
+        
+        <p class="footnote">
+          <i>The Final Victory Lap with Songs of Ascent</i>
+        </p>
+        <p class="footnote">
+          1hr 19min 48sec video
+        </p>
+        <br>
+        
+        <p class="footnote">
+          [2]-[6] <i>superman, superbad, supermad, superfly, fool you can die </i>
+        </p>
+        <p class="footnote">
+          carpet, stainless steel link chain rope chain necklace for men fashion hip hop jewelry or fake gold chains
+        </p>
+        <br>
+        
+        <p class="footnote">
+          [10]-[13] <i>the possibility of escape, a leap to freedom, out of the implacable ritual, a wild run for it that would give whatever chance for hope there was </i>
+        </p>
+        <p class="footnote">
+          MDF, fleece, carbon monoprints on paper, plexi, neon, subwoofer
+        </p>
+        
+        <br><br>
+        <p>Freddy Villalobos</p>
+      </div>
+    </div>
+    
+    <a id="exit" href="../">Exit</a>
+    <a id="text-right">Text</a>
+<!--     <a id="text-left">Text</a> -->
+    <a id="text-close">Close</a>
+    <div id="noise"></div>
+    <div id="loading-fonts">
+      <span style="font-family: oldround0;">0</span>
+      <span style="font-family: oldround1;">1</span>
+      <span style="font-family: oldround2;">2</span>
+      <span style="font-family: oldround3;">3</span>
+      <span style="font-family: oldround4;">4</span>
+      <span style="font-family: oldround5;">5</span>
+      <span style="font-family: oldround6;">6</span>
+      <span style="font-family: oldround7;">7</span>
+      <span style="font-family: oldround8;">8</span>
+      <span style="font-family: oldround9;">9</span>
+    </div>
+    <div id="showimage"></div>
+    
+    
+    <div id="text-container">      
+      
+      <div id="text-container-right">
+        
+        <p class="btext">
+          A car sharks slowly through the South L.A. streets of Jefferson, King, Broadway, Crenshaw, Slauson. A medal hangs in the rear-view mirror, in which auburn-tinted cars (equally drab, equally slow) move in and out of the processional, mundane flow. Pieces from Biblical proverbs are scattered across the car in alluring fragments: “Eat your labor within your house” as the car passes a Taco Bell and Jack-in-the-Box saluting each other at an unlooked-at corner. Much of the backgrounds that passes by in the video is out of focus, trained squarely on the victory medal. It’s hard to piece out the mapped territory, only blurry suggestions of a pupuseria, an Arco gas station, a church. Something’s being instinctively remembered here: the winding outlines of directions and remembered place that only appear as spectral absence, in dreams. “This is my final resting place,” as one of the Proverbs states, but also “from my youth/from our youth,” and also “this is where I go up,” which sounds like “this is where I grow up.”
+        </p>
+        
+        <p>
+          <span class="btext">Just as Villalobos’s last piece</span> <i class="btext">it is what it is but if it’s on then it’s on</i> <span class="btext">(2020) cross references the menacing mirror talk-back of Martin Scorsese’s</span> <i class="btext">Taxi Driver</i> <span class="btext">(1976), the car weaving through barely-recognizable, blurry-eyed South Central establishments abstracts the 1991 masterpiece</span> <i class="btext">Boyz n the Hood</i><span class="btext">, directed by John Singleton, whose films remain a significant (if not-all-encompassing) touchstone for Villalobos. This video piece — entitled</span> <i class="btext">The Final Victory Lap with Songs of Ascent</i><span class="btext">, one of three component parts of Villalobos’s larger installation,</span> <i class="btext">I seek, I seek and can’t find but a dream desublimated</i> <span class="btext">(2021) — is also indicative of his scribble-and-pare down approach, in which melodrama is evacuated. The final barreling-down-a-one-way-street (Benjamin) bears little proximity to the moralizing and operatic pathos of the Singleton classic. Villalobos divests Singleton’s narrative of its messaging (i.e., Furious Styles lecturing Tre on the path “above” hood life through the pinched reflections of rear-views) by replacing the message with unenunciated, barely-felt vibrations: the, for instance, static dead space that creeps into waiting for the light to turn not-red. Across from this video, the snaking path of a chain hangs on the wall, suggesting (a) the route of the car, (b) a building not yet built, and/or (c) a golden pattern always illegible to the human eye.</span>
+        </p>
+        
+        <p>
+          <span class="btext">This cool-headed, not-that-taxing-or-laborious-looking work is an exemplar in how to navigate wide space, telling sentiment-free stories of combat and insolence without a kind of totalizing, one-size-fits-all framework of interpretation (i.e., nothing Capitalized). As Benjamin once said of his own work, it is the “attempt to capture the portrait of history in the most insignificant representations of reality, its scraps, as it were.” The scraps are the memories of childhood—psychogeography, machismo, the whirling</span> <i class="btext">ronde</i> <span class="btext">of death and desire—that Villalobos re-evokes in bizarre, self-contained, ungiving fragments. He clashes objects with each other and they achieve a brief harmony. He remixes his past work, not to improve (morally): the black boxes with their scrawls and Twombly-ish id-derived erasures from Villalobos’s previous work,</span> <i class="btext">it is what it is but if it’s on then it’s on</i><span class="btext">, return here, wrested out of its previously dense-mercury-black space, illumined by the double-negation of a neon yellow “DIDN’T EVEN DO NOTHIN’,” softened by a sensual white fabric (the longed and lusted-after blankets of Baldwin Hills). The images appear and emerge surrealistically: the rose tattoos — the kinky Buñuel lips — a monstrous Mr. Moneybags about to curb-stomp a black panther — the “S” and “C” in U-S-C linked in an unholy bondage. Manic scribbling and erasure dominate the boxes and the larger installation, but the erasure emerges out of a specific politics of the unconscious, placed within Ric’s Fish Market, endless bush-rows of churches, Black congregating space that spills into the parking lots of smoke barbecue joints—all of which fly away from the wretchedly interested eyes of voyeurs. Patchwork, a remixed combine, rationed Burger Kings and Church’s Chickens that pass along on the world’s least funerary funeral march for a Slauson Boy. “All who fear walk in obedience,” one of the proverbs says. Villalobos, too, walks fearless; in his wake is the work of industrious unkempt nibbling around the edges of physical experience.</span>
+        </p>
+        
+        <p>
+          <span class="btext">The space is transformed just enough for words to gather, briefly, and react against the narratives of public grief and legible suffering that pervade our time. What he does, partly, is play around, poetically, with codes — he retains a faith in tactility, in textures of the body that can replenish the mind in the face of so much obvious destruction, planetary and political. There’s poetry—the evasive need to comment yet to be un-there—in the unconscious Rhyme between the video’s victory medal that hangs from the auto rearview, and the Superman chain that hangs over a carpet void to the immediate physical left. (The title of the latter part:</span> <i class="btext">superman, superbad, supermad, superfly, fool you can die</i><span class="btext">). The drooping chain with the Superman “S” surges forward to the impossible Übermensch and backwards to the S’s formed with a straight line here and a straight line there on the cafeteria tabletops of Angeles Mesa Elementary. More collections of precious objects, brought gracefully together to create—what—a totally useless collecting business. Benjamin, again: “As Hegel puts it, only when it is dark does the owl of Minerva begin its flight. Only in extinction is the collector comprehended.” Within this profound night, the sounds of the perpetually on car radio, an owl flies—flits, even; space is shattered, as the surreally jumbled icons of childhood—the pissed-off Pillsbury Doughboy shoving stacks of Benjamins in our face, the “forever grateful” Simba held up by floating Rafiki hands—break up in memory-space like salt scattered across a tabletop. A queasy union prevails. In the face of death, these boxes and this neon sign come together to accept it and not capitulate to its contingent boxing-in-of-the-limitless-subject. “Or” is a useless conjunction for Villalobos; the “and,” the em-dash, the semi-colon with its various Barthesian multiplying blooming chains of thought is more the deal. For a moment, everything hangs in a thick atmosphere of mental links, delicate, promising.</span>
+        </p>
+        
+        <p class="btext">
+          (Text by Carlos Valladares)
+        </p>
+
+      </div>
+      
+    </div>
+  </body>
+</html>

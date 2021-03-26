@@ -31,13 +31,13 @@ const touchCoords = (event, offset) => {
 const getClick = (event) => {
   let click = {
     "x": event.clientX,
-    "y": event.clientY,
-    "depth": Math.ceil(155 * Math.random()) + 100
+    "y": event.clientY
+    // "depth": Math.ceil(155 * Math.random()) + 100
   }
   return click
 }
 
-const getNoises = (noises, n, xPosition, yPosition, noiseDepth) => {
+const getNoises = (noises, n, xPosition, yPosition) => {
   let pixels = ''
   for (let i = 0; i < n; i++) {
     let x = noises[i][xPosition]
@@ -49,3 +49,155 @@ const getNoises = (noises, n, xPosition, yPosition, noiseDepth) => {
   return pixels
 }
 
+// text degradation on hover
+function textDecay(words) {
+  for (let i = 0; i < words.length; i++) {
+    // set initial hover state
+    let hover = false
+    // get font weight
+    let weight = words[i].style.fontFamily.slice(-1)
+    // for desktop: when mouse over the word
+    words[i].addEventListener('mouseenter', () => {
+      if ( weight < 9 ) {
+        weight++
+        words[i].style.fontFamily = "oldround" + weight
+      }
+      hover = true
+      // decay (weight+1) every 1/2 second
+      var textDecay = setInterval(function(){
+        if ( hover == true && weight < 9 ) {
+          weight++
+          words[i].style.fontFamily = "oldround" + weight
+        } else {
+          clearInterval(textDecay)
+        }
+      },500);
+    })
+    // for desktop
+    words[i].addEventListener('mouseleave', () => {
+      hover = false
+    })
+  }
+}
+
+// text degradation on touch
+function textDecayMobile(words) {
+  for (let i = 0; i < words.length; i++) {
+    // set initial hover state
+    let hover = false
+    // get font weight
+    let weight = words[i].style.fontFamily.slice(-1)
+    // for touchscreen: when touch on the word
+    words[i].addEventListener('touchstart', (event) => {
+      event.preventDefault()
+      if ( weight < 9 ) {
+        weight++
+        words[i].style.fontFamily = "oldround" + weight
+      }
+      hover = true
+      // decay (weight+1) every 1/2 second
+      var textDecay = setInterval(function(){
+        if ( hover == true && weight < 9 ) {
+          weight++
+          words[i].style.fontFamily = "oldround" + weight
+        } else {
+          clearInterval(textDecay)
+        }
+      },500);
+    })
+    // for touchscreen
+    words[i].addEventListener('touchend', (event) => {
+      event.preventDefault()
+      hover = false
+    })
+  }
+}
+
+
+function hidebg() {
+  document.querySelector('#wall').style.opacity = "0"
+  document.querySelector('.center').style.opacity = "0"
+  document.querySelector('#showimage').style.opacity = "0"
+}
+
+function showbg() {
+  document.querySelector('#wall').style.opacity = "1"
+  document.querySelector('.center').style.opacity = "1"
+  document.querySelector('#showimage').style.opacity = "1"
+}
+
+function switchTextContainer(textContainerOff,textContainerOn,textButtonOff,textButtonOn) {
+  textContainerOff.style.display = "none"
+  textContainerOn.style.display = "block"
+  textButtonOff.style.display = "none"
+  textButtonOn.style.display = "block"
+}
+
+// toggle show text
+function toggleShowText() {
+  let closeButton = document.querySelector('#text-close')
+  let textContainer = document.querySelector('#text-container')
+  let textButtonLeft = document.querySelector('#text-left')
+  let textContainerLeft = document.querySelector('#text-container-left')
+  let textButtonRight = document.querySelector('#text-right')
+  let textContainerRight = document.querySelector('#text-container-right')
+  if (textContainer != null) {
+    textContainer.style.display = "none"
+  }
+  
+  if (textButtonLeft != null) {
+    textButtonLeft.addEventListener('click', () => {
+      textButtonLeft.style.display = "none"
+      textContainerLeft.style.display = "block"
+      closeButton.style.display = "block"
+
+      if ( textContainer.style.display === "none" ) {
+        // console.log("none")
+        textContainer.style.display = "flex"
+        hidebg()
+      } else {
+        // console.log("flex")
+        if (textContainerRight.style.display === "block") {
+          switchTextContainer(textContainerRight,textContainerLeft,textButtonLeft,textButtonRight)
+        }
+      }
+      
+    })
+  }
+  
+  if (textButtonRight != null) {
+    textButtonRight.addEventListener('click', () => {
+      textButtonRight.style.display = "none"
+      textContainerRight.style.display = "block"
+      closeButton.style.display = "block"
+
+      if ( textContainer.style.display === "none" ) {
+        // console.log("none")
+        textContainer.style.display = "flex"
+        hidebg()
+      } else {
+        // console.log("flex")
+        if (textContainerLeft.style.display === "block") {
+          switchTextContainer(textContainerLeft,textContainerRight,textButtonRight,textButtonLeft)
+        }
+      }
+
+    })
+  }
+  
+  
+  closeButton.addEventListener('click', () => {
+    textContainer.style.display = "none"
+    
+    if (textButtonLeft != null) {
+      textButtonLeft.style.display = "block"
+      textContainerLeft.style.display = "none"
+    }
+    
+    textButtonRight.style.display = "block"
+    textContainerRight.style.display = "none"
+    closeButton.style.display = "none"
+    
+    showbg()
+  })
+}

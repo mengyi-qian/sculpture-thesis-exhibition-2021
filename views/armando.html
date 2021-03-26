@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Armando Cortés</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/rooms.css">
+    <script src="/script.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/functions.js"></script>
+    <script>
+      var socket = io()
+      
+      window.onload = async () => {
+        let body = document.querySelector('body')
+        let bg = document.querySelector('#wall')
+        let noise = document.querySelector("#noise")
+        
+        // floating background
+        body.addEventListener('mousemove', (event) => {
+          bg.style.transform = `translate(${showCoords(event,50)[0]}px, ${showCoords(event,50)[1]}px)`
+        })
+        body.addEventListener('touchmove', (event) => {
+          bg.style.transform = `translate(${touchCoords(event,50)[0]}px, ${touchCoords(event,50)[1]}px)`
+        })
+        
+        toggleShowText()
+        
+        // console.log(window.innerWidth)
+        if ( window.innerWidth > 600 ) {
+          // create a span for each word
+          let btexts = document.querySelectorAll(".btext")
+          for (let btext of btexts) {
+            btext.innerHTML = btext.textContent.replace(/\b(\w+)\b/g, `<span style="font-family:oldround0">$1</span>`)
+          }
+          // Text degradation
+          let btextWords = document.querySelectorAll(".btext span")
+          textDecay(btextWords)
+          // Set word break
+          for (let btextWord of btextWords) {
+            if (btextWord.textContent.length >= 10) {
+              btextWord.style.wordBreak = "break-word"
+              btextWord.style.hyphens = "auto"
+            }
+          }
+        }
+        
+        // add noises on click
+        body.addEventListener('click', (event) => {
+          let click = getClick(event)
+          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px;)"></div>`
+          socket.emit('new click', click)
+        })
+        
+        // get noises on fresh
+        socket.on('refresh data', (noises)=>{
+          let n = noises.length
+          noise.innerHTML = getNoises(noises, n, "x", "y")
+        })
+      }
+    </script>
+  </head>  
+  <body>
+    <div id="wall">
+      <nav id="top">
+        <a class="hoverImg">[1]</a>
+        <a class="hoverImg">[2]</a>
+        <a class="hoverImg">[3]</a>
+        <a class="hoverImg">[4]</a>
+        <a class="hoverImg">[5]</a>
+      </nav>
+      <nav id="right">
+        <a class="hoverImg">[6]</a>
+        <a class="hoverImg">[7]</a>
+        <a class="hoverImg">[8]</a>
+      </nav>
+      <nav id="bottom">
+        <a class="hoverImg">[14]</a>
+        <a class="hoverImg">[13]</a>
+        <a class="hoverImg">[12]</a>
+        <a class="hoverImg">[11]</a>
+        <a class="hoverImg">[10]</a>
+        <a class="hoverImg">[9]</a>
+      </nav>
+      <nav id="left">
+        <a class="hoverImg">[15]</a>
+        <a class="hoverImg">[16]</a>
+        <a class="hoverImg">[17]</a>
+      </nav>
+      <div class="center name" id="armando">
+        <p>Pata Rajada</p>
+        <p class="footnote wider">
+          2021
+        </p>
+        <p class="footnote wider">
+          17.5’L x 7.5'H x 7’D
+        </p>
+        <br>
+        
+        <p class="footnote wider">
+          Objects list:
+        </p>
+        <p class="footnote wider">
+          [6]-[7] <i>Untitled (mask)</i>, Armadillo shell, cedar, leather, 12” x12” x3”, 2021
+        </p>
+        <p class="footnote wider">
+          [8] <i>Untitled (tabacco)</i>, Nicaraguan filler and wrapper, 5” x.5” x.5”
+        </p>
+        <p class="footnote wider">
+          [9] <i>Untitled figure</i>, Artist unknown, terracotta, 11.5” x1.25” x1.25”, Pre-columbian
+        </p>
+        <p class="footnote wider">
+          [10]-[11] <i>Untitled (Ventana)</i>, Alabaster, fire opal, solder, 26” x37” x.25”, 2021
+        </p>
+        <p class="footnote wider">
+          [12] <i>Untitled</i>, Stoneware, glaze, 4.5” x2.5” x2.5”, 2019
+        </p>
+        <p class="footnote wider">
+          [13] <i>Untitled (snake)</i>, Glass bottle, rubbing alcohol, snake, corn cob, plastic, 10.5” x2.5” x2.5”, 2021
+        </p>
+        <p class="footnote wider">
+          [14] <i>Untitled (scorpions)</i>, Glass bottle, rubbing alcohol, scorpions, corn cob, plastic, 10.5” x2.5” x2.5”, 2021
+        </p>
+        <p class="footnote wider">
+          <i>Untitled (marijuana)</i>, Glass bottle, rubbing alcohol, marijuana, corn cob, plastic, 11.5” x3” x1.5”, 2021
+        </p>
+        <p class="footnote wider">
+          [15]-[16] <i>Espejo/wall fragment</i>, Obsidian, solder, 27” x27” x1”, 2021
+        </p>
+        <p class="footnote wider">
+          [17] <i>Untitled carving</i>, Alabaster, 5.5” x1.5” x.75”, 2020
+        </p>
+        <p class="footnote wider">
+          <i>Untitled (amulet)</i>, Feathers, palo santo, ribs, thread, 8” x1.5” x1”, 2020
+        </p>
+        <p class="footnote wider">
+          <i>Pata Rajada</i>, Leather, soles, blades, Mens size 9.5, 2021
+        </p>
+        
+        <br><br>
+        <p>Armando Cortés</p>
+      </div>
+    </div>
+    
+    <a id="exit" href="../">Exit</a>
+    <a id="text-right">Text</a>
+<!--     <a id="text-left">Text</a> -->
+    <a id="text-close">Close</a>
+    <div id="noise"></div>
+    <div id="loading-fonts">
+      <span style="font-family: oldround0;">0</span>
+      <span style="font-family: oldround1;">1</span>
+      <span style="font-family: oldround2;">2</span>
+      <span style="font-family: oldround3;">3</span>
+      <span style="font-family: oldround4;">4</span>
+      <span style="font-family: oldround5;">5</span>
+      <span style="font-family: oldround6;">6</span>
+      <span style="font-family: oldround7;">7</span>
+      <span style="font-family: oldround8;">8</span>
+      <span style="font-family: oldround9;">9</span>
+    </div>
+    <div id="showimage"></div>
+    
+    
+    <div id="text-container">      
+      
+      <div id="text-container-right">
+        <p class="text-title btext">On Pata Rajada</p>
+        <br>
+        
+        <p>
+          <span class="btext">“Para todos, excepto para ellos mismos, (los campesinos) encarnan lo oculto, lo escondido y que no se entrega sino difícilmente, tesoro enterrado, espiga que madura en las entrañas terrestres, vieja sabiduría escondida entre los pliegues de la tierra.” —Octavio Paz,</span> <i class="btext">Laberinto De Soledad</i>
+        </p>
+        
+        <p>
+          <i class="btext">Pata rajada</i> <span class="btext">facilitates an encounter with the banality of magic.</span>
+        </p>
+        
+        <p>
+          <span class="btext">Armando Cortés built a nearly eight-foot-tall semi-circular seating structure that imitates those found at</span> <i class="btext">peleas de gallos</i><span class="btext">, or cockfights, in Mexico. But unlike the</span> <i class="btext">palenques</i><span class="btext">, or enclosures, found in open-air Mexico, this one doesn’t face a pit destined for bloody avian mayhem. Instead, it faces a blank wall. The viewer is thus granted direct access to the understructure of the</span> <i class="btext">palenque</i><span class="btext">, with its exposed scaffolding composed of spindly strips of cedar wood. Questions of viewership and expectation begin to emerge, as the site of spectacle remains within vision but out of reach, with the viewer turned away from the center and toward the peripheries.</span>
+        </p>
+        
+        <p>
+          <span class="btext">The seating’s exposed geometric scaffolding and minimalist materiality endow it with an air of transparency, giving the impression that the understructure is unequivocally readable. Cortés, however, interrupts the structure’s supposed legibility with moments of physical and poetic rupture by interspersing a series of objects throughout the belly of the</span> <i class="btext">palenque</i><span class="btext">. These objects—mirrors, amulets, masks, and medicine—give the structure moments of visual rhyme and rhythm. They speak to one another either materially, in function, or in form, evoking a dynamic exchange between levity and gravitas, seriousness and play. For instance, tucked behind a corner appears a small bundle of luminescent feathers—an amulet, designed for protection and care. The plumes’ delicate and airy nature oppose the heft of a large circular mosaic obsidian mirror nearby, which hangs by a leather strap, light dispersing across its uneven surfaces. This broken black mirror, in turn, contrasts a square mosaic screen made of alabaster, placed between two beams, this time light thinly bleeding through these fractured stones. The intersections and divergences between these three objects invite the viewer to play with their visual, material, and formal connections.</span>
+        </p>
+        
+        <p>
+          <span class="btext">Overall, the</span> <i class="btext">palenque</i> <span class="btext">appears as a brittle skeleton—an effect created by the cedar wood Cortés chose, specifically selected for its fragility, its history, and its functional purposes. Covered in knots, Cortés anticipated the beams splintering and breaking. Some of the wooden planks bend and buckle at precarious angles, while others display a clean split—evocative of a fractured femur. One beam is upheld by a corn cob that doubles as architectural support and stopper, covering a glass bottle containing rubbing alcohol and mariguana. Cortés includes two other bottles similar to the weed container-cum-architectural fixture. Inside, rubbing alcohol replaces Coke and embalms venomous creatures. A coiled snake occupies one bottle, its scales alternating in red, black, and yellow bands, while scorpions float in the other—suspended as if in combat, or even dance. These bottles recall the fluid-preserved specimens collected by early modern humanists and natural historians obsessed with taxonomizing the world. But these objects are not curiosities, as Cortés warns. Instead, they simply hold the antidotes to the poisonous bites and stings endemic to the Mexican countryside. In the United States or in the context of Yale or an art show, they become something else. Medicine or magic?</span>
+        </p>
+        
+        <p>
+          <i class="btext">It’s just a remedy.</i>
+        </p>
+
+        <p>
+          <span class="btext">So what does that make</span> <i class="btext">Pata rajada</i> <span class="btext">then? Perhaps the opposite of a cabinet of curiosities—a storage unit for things purposely misplaced, but not forgotten. Each object included serves not as an example of</span> <i class="btext">naturalia</i> <span class="btext">or</span> <i class="btext">artificalia</i><span class="btext">, but rather as an index of personal memories and stories. The</span> <i class="btext">palenque</i> <span class="btext">and the objects it houses play with desire in their delightful materials (glass, stone, armadillo skin) and in their placement. They tease the viewer, acting surreptitiously while remaining in plain sight. And although seeable, they nonetheless remain unknowable. In the face of this massive structure and the alluring object it holds—whether feather, serpent, or alabaster—the viewer remains impotent, barred from access to the stories and memories of any single object. Instead, they stand poised on the precipice of understanding: drawn to the glimmer, the unexpected, the bizarre all the while unable to be “in the know.”</span>
+        </p>
+
+        <p>
+          <i class="btext">If you become aware of magic, does it go away?</i>
+        </p>
+
+        <p>
+          <span class="btext">Cortés shares that in</span> <i class="btext">Laberinto De Soledad</i> <span class="btext">the Mexican poet Octavio Paz writes of the old wisdom and occult knowledge held in the body of</span> <i class="btext">campesinos</i> <span class="btext">(“peasants”) who remain the only people unaware of the access to magic they hold. Not because of ignorance, Cortés assures, but because it’s just their everyday life. They cannot see the magic, because it surrounds them, because they live in the banality of magic. Cortés alludes to these campesinos through a large pair of red leather chanclas, or sandals, that hang from a nail. On their ankles, Cortés affixed an espolón—the type of blade tethered to a fighting cock’s legs—and in doing so provides both an iconographic nod to the scene at hand, and to the installation’s name:</span> <i class="btext">pata rajada</i><span class="btext">. When translated literally, the term refers to a scraped-up foot; the conjured image, however, serves as a visual index for the phrase’s derogatory weight, used to describe a person who is uncouth, rude, and dirty. Someone who can only afford to wear sandals and, thus, expose their feet to the elements. Someone who is brown and poor. In other words, an</span> <i class="btext">indio.</i>
+        </p>
+
+        <p>
+          <i class="btext">You’re native, but not in the heroic sense.</i>
+        </p>
+
+        <p>
+          <span class="btext">Colloquially,</span> <i class="btext">pata rajada</i> <span class="btext">can carry the weight of a nasty insult or a teasing joke. In paralleling the</span> <i class="btext">indio</i> <span class="btext">with the cock, Cortés examines the relationship between humans and animals as spectacles and the expectations imposed on each. What does it mean to put the Indigenous man in the cockpit? Cortés, in preventing direct access to the center, unsettles any expectations of presenting a spectacle especially of himself. And yet, in moments unexpected, perhaps as you leave having seen enough, or in a quiet moment of contemplation, you hear it: a screech, a scream, a yelp, a cry, a</span> <i class="btext">grito.</i>
+        </p>
+
+        <p>
+          <i class="btext">Aún los gallos lloran, Mandito.</i>
+        </p>
+
+        <p>
+          <span class="btext">In playing with viewers’ positionality and bringing together elements from the natural and capitalistic world, Cortés ensures viewers are sucked into the “magic” but can never fully experience its true form, at least on their own. Cortés shared with me his stories. About how, as a child his mother would blow tobacco smoke on him to dissipate susto. About massaging weed infused rubbing alcohol on his mother’s shoulders after a long day. About his father storing objects based on momentary convenience rather than practicality (</span><i class="btext">why is the kitchen knife in the tool box?</i><span class="btext">). About his uncle, who happens to be his father’s brother-in-law (</span><i class="btext">the pueblo is small</i><span class="btext">). And about his cousins who remain suspended in the anticipation of achieving their dreams of finding home elsewhere. Stories about festivals and murders, about gold and ghosts, about mountains of obsidian that reside in the underworld. Stories about jokes played on well-meaning white ladies.</span>
+        </p>
+
+        <p>
+          <i class="btext">It’s all real.</i>
+        </p>
+
+        <p>
+          <span class="btext">Stories with unknown origins that then serve as the fodder for new stories he creates with characters that are in the process of becoming. In other words, the beauty and intrigue of the visual drama that unfolds, is that those “in the know”—the</span> <i class="btext">pata rajadas</i><span class="btext">—remain unaware of occupying this position. Only by knowing the stories can I realize that I will never fully know. And only by confronting the inescapability of my own ignorance can I laugh.</span>
+        </p>
+                
+        <p class="footnote">
+          <b class="btext">Postscript</b>
+        </p>
+        
+        <p class="footnote">
+          <span class="btext">“It’s all real rings”</span> <i class="btext">so true and cannot be emphasized enough. During one of our first visits  you said something like, “myth is the antonym of history.” That has stayed with me since then. Those words so well encapsulate what my practice is more broadly about. When talking about myth and myth-making, I am really talking about making believable. As an artist, I am attempting to put into material objects and form the knowledge and connections that I collect and pass on as a cuenta cuentos, a storyteller.</i>
+        </p>
+        
+        <p class="footnote">
+          <i class="btext">Before beginning this writing we talked about perhaps sharing some stories in it. You mention here also that I shared some of these with you already, Nathalie. As I contribute to this document, however, I become aware that the sharing of stories really does require physical presence and acoustics. I also begin to think about the questioning of viewership and spectacle that the work addresses. To tell the story behind the object in some way undermines the fact that not everyone will understand the exact function, reason, and connection to all of the objects. Perhaps it is not so much to do with typing out a story but with the way in which this writing might be disseminated. I have never had to think about it before, to be honest, but I am starting to feel like stories are most powerful when told in person. I wonder what you think of that and how you might connect it to our time together in the studio and in the gallery and to the work itself.</i>
+        </p>
+        
+        <p>
+          <span class="btext">Through our conversations in the studio I realized that your stories, Armando, are the heartbeat of</span> <i class="btext">Pata rajada</i><span class="btext">. Which makes your piece achieve its fullest realization through being in relationship and conversation with you.</span>
+        </p>
+        
+        <p class="btext">
+          (Text by Nathalie Miraval)
+        </p>
+
+      </div>
+      
+    </div>
+  </body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hyeree - To Hear No Echo</title>    
+    <title>Hyeree Ro</title>    
     <link rel="stylesheet" href="/global.css">
     <link rel="stylesheet" href="/rooms.css">
     <script src="/script.js" defer></script>
@@ -20,59 +20,161 @@
         
         // floating background
         body.addEventListener('mousemove', (event) => {
-          bg.style.transform = `translate(${showCoords(event,60)[0]}px, ${showCoords(event,60)[1]}px)`
+          bg.style.transform = `translate(${showCoords(event,50)[0]}px, ${showCoords(event,50)[1]}px)`
         })
         body.addEventListener('touchmove', (event) => {
-          bg.style.transform = `translate(${touchCoords(event,60)[0]}px, ${touchCoords(event,60)[1]}px)`
+          bg.style.transform = `translate(${touchCoords(event,50)[0]}px, ${touchCoords(event,50)[1]}px)`
         })
+        
+        toggleShowText()
+        
+        // console.log(window.innerWidth)
+        if ( window.innerWidth > 600 ) {
+          // create a span for each word
+          let btexts = document.querySelectorAll(".btext")
+          for (let btext of btexts) {
+            btext.innerHTML = btext.textContent.replace(/\b(\w+)\b/g, `<span style="font-family:oldround0">$1</span>`)
+          }
+          // Text degradation
+          let btextWords = document.querySelectorAll(".btext span")
+          textDecay(btextWords)
+          // Set word break
+          for (let btextWord of btextWords) {
+            if (btextWord.textContent.length >= 10) {
+              btextWord.style.wordBreak = "break-word"
+              btextWord.style.hyphens = "auto"
+            }
+          }
+        }
         
         // add noises on click
         body.addEventListener('click', (event) => {
           let click = getClick(event)
-          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px; background-color:rgba(${click.depth},${click.depth},${click.depth},1)"></div>`
+          noise.innerHTML += `<div class="pixel" style="top:${click.y}px; left:${click.x}px;)"></div>`
           socket.emit('new click', click)
         })
         
         // get noises on fresh
         socket.on('refresh data', (noises)=>{
           let n = noises.length
-          noise.innerHTML = getNoises(noises, n, "x", "y", "depth")
-        })         
+          noise.innerHTML = getNoises(noises, n, "x", "y")
+        })      
       }
     </script>
   </head>  
   <body>
     <div id="wall">
       <nav id="top">
-        <a>seseri</a>
-        <a>[1]</a>
-        <a>[2]</a>
-        <a>[3]</a>
-        <a>thirty-thousand dollars in a box</a>
-        <a class="hoverImg">[1]</a>
-        <a class="hoverImg">[2]</a>
-      </nav>
-      <nav id="left">
-        <a>hyeree christina mary</a>
-        <a class="hoverVideo">[1]</a>
-      </nav>
-      <nav id="bottom">
-        <a>nago nago nago</a>
-        <a class="hoverImg">[1]</a>
-        <a>passage from 1903-1905 and on</a>
-        <a class="hoverImg">[1]</a>
-      </nav>
-      <nav id="right">
-        <a>moving prints</a>
         <a class="hoverImg">[1]</a>
         <a class="hoverImg">[2]</a>
         <a class="hoverImg">[3]</a>
+        <a class="hoverImg">[4]</a>
+        <a class="hoverImg">[5]</a>
+        <a class="hoverImg">[6]</a>
+        <a class="hoverImg">[7]</a>
       </nav>
-      <p class="center name" id="hyeree">Hyeree Ro</p>
+      <nav id="left">
+        <a class="hoverImg">[8]</a>
+        <a class="hoverImg">[9]</a>
+        <a class="hoverImg">[10]</a>
+        <a class="hoverImg">[11]</a>
+      </nav>
+      <nav id="bottom">
+        <a class="hoverImg">[19]</a>
+        <a class="hoverImg">[18]</a>
+        <a class="hoverImg">[17]</a>
+        <a class="hoverImg">[16]</a>
+        <a class="hoverImg">[15]</a>
+        <a class="hoverImg">[14]</a>
+        <a class="hoverImg">[13]</a>
+        <a class="hoverImg">[12]</a>
+      </nav>
+      <nav id="right">
+        <a class="hoverImg">[20]</a>
+        <a class="hoverImg">[21]</a>
+        <a class="hoverImg">[22]</a>
+        <a class="hoverImg">[video]</a>
+      </nav>
+      <div class="center name" id="hyeree">
+        <p>flour hat (floor)</p>
+        <p class="footnote">
+          2021
+        </p>
+        <p class="footnote">
+          Dimensions variable
+        </p>
+        <br>
+        
+        <p class="footnote wider">
+          [4]-[5]
+        </p>
+        <p class="footnote wider">
+          <i>(wild geese) </i>or flour or water or Korea Post box, 15 x 5 x 4.5 inches, 2021
+        </p>
+        <p class="footnote wider">
+          <i>(screen or fence or sifter) </i>or maple or cotton sheer cloth or wood glue or hinges, dimensions variable or each frame 14 x 85 x 0.75 inches, 2021
+        </p>
+        <br>
+        
+        <p class="footnote wider">
+          [6]
+        </p>
+        <p class="footnote wider">
+          <i>(screen or fence or sifter) </i>or poplar or cotton sheer cloth or synthetic organza or wood glue or hinges, dimensions variable or each frame 7 x 38 x 0.75 inches, 2021
+        </p>
+        <br>
+        
+        <p class="footnote wider">
+          [7]-[11]
+        </p>
+        <p class="footnote wider">
+          <i>(magpie or crow) </i>or flour or water or USPS box, 18 x 4 x 5.5 inches, 2021
+        </p>
+        <p class="footnote wider">
+          <i>(crane or stork) </i>or “is that bread?” or flour or water or DHL box, 19.5 x 5 x 3.5 inches, 2021
+        </p>
+        <p class="footnote wider">
+          <i>(pigeon or dove) </i>or flour or water or direct mail advertisements, 12 x 5 x 5 inches, 2021
+        </p>
+        <p class="footnote wider">
+          <i>(screen or fence or sifter) </i>or wood or cotton sheer cloth or synthetic organza or wood glue or hinges, dimensions variable or each frame 14 x 7.5 x 0.75 inches, 2020
+        </p>
+        <p class="footnote wider">
+          and papers, silver balls or eggs
+        </p>
+        <br>
+        
+        <p class="footnote wider">
+          [12]-[19]
+        </p>
+        <p class="footnote wider">
+          <i>flour hat (floor)</i>, flour, paper maché, steel, tiles, six actions, 18 x 18 feet, 2021
+        </p>
+        <br>
+        
+        <p class="footnote wider">
+          [20]-[22][video]
+        </p>
+        <p class="footnote wider">
+          <i>flour hat (floor) video</i>, single channel video, 7’22’’, 2021
+        </p>
+        <p class="footnote wider">
+          performers: Lucas Yasunaga, Armando Cortés, Hyeree Ro
+        </p>
+        <p class="footnote wider">
+          camera: Minhwan Kim, Hyeree Ro
+        </p>
+        
+
+        <br><br>
+        <p>Hyeree Ro</p>
+      </div>
     </div>
     
     <a id="exit" href="../">Exit</a>
-    <a id="text">Text</a>
+    <a id="text-right">Text</a>
+    <a id="text-left">Text</a>
+    <a id="text-close">Close</a>
     <div id="noise"></div>
     <div id="loading-fonts">
       <span style="font-family: oldround0;">0</span>
@@ -86,6 +188,53 @@
       <span style="font-family: oldround8;">8</span>
       <span style="font-family: oldround9;">9</span>
     </div>
-    <div id="showimage"></div>    
+    <div id="showimage"></div>
+    
+    
+    <div id="text-container">
+      <div id="text-container-left">
+        <p>
+          <span class="btext">Arriving at an unfamiliar place, a newcomer experiences a sense of disorientation. Strangers’ eyes dissect what is visible on the alien body. One’s adornments mediate between one’s sense of self and what one is perceived to be. Clothing, as a second skin, fulfills a number of roles in this dynamic. It acts as a protective layer, shielding the body and its interior from the outside. It serves as an interface, making visible what is hidden within. As an enveloping skin, clothing is both capable of insulation and expression. Yet its fragility also makes it vulnerable to potential physical or social violence. Anne Cheng has written that skin is “by nature a medium of transition and doubleness”; it behaves as a “safe encasement”</span><sup class="btext">1</sup> <span class="btext">as well as suggests “the imminent threat of tearing, flaying, and displacement.” Clothing is an extension of the self: it is a home we take with us, one that is susceptible to exterior pressures.</span>
+        </p>
+          
+        <p class="btext">
+          On the white, snow-like powdered surface, shapes resembling letters and traces left by something passing over the surface overlap atop each other. Between these traces, there are objects here and there that look like either small hills or inverted vessels. The scene is reminiscent of complex roads, mountains, and hills of a city as they are seen from above. At the same time, it looks as if someone walked around a snowfield and made a playful sculpture. The objects existing in this quiet, bleached space do not directly refer to objects outside the work. The installation may be read as “poetic” to some viewers or to others like a formalist work of art where these objects gain autonomous meanings in silence.
+        </p>
+        
+        <p>
+          <span class="btext">In fact, Hyeree’s work is based on her own experiences rather than any sort of poetic or formalist ideas.</span> <i class="btext">Flour Hat (Floor)</i><span class="btext">(2021) is based on her paternal grandfather who worked at a flour manufacturing factory, her father who made hats, and herself. The numerous traces and objects occupying the floor cite specific references rather than arbitrary decisions. For example, on the same spot of the white flour surface, she writes the name of her grandfather with her feet and hands then covers it with flour, her father’s name and covers it, and then her own name and covers it, repeatedly cycling through each name. She also marks figures including stars, hats, and palm lines closely related to the personal experiences of her grandfather, father, and herself and covered them with flour. The tracings of her intimate family stories that accumulate and overlap on the white surface appear like a large</span> <i class="btext">palimpsest</i><span class="btext">, the tracings and erasures visible simultaneously. In this space, the past is neither completely erased nor remaining fully intact. Rather, as time goes by, the past continues to affect future events while transforming itself in its interaction with future events. Without providing many clues or much explanation, there is an opacity to the past envisioned in Hyeree’s </span> <i class="btext">palimpsest</i><span class="btext">, making itself highly illegible to viewers. The objects almost look like an old archetype of objects; even though they evoke the viewers’ interpretation, it is difficult for viewers to specify particular referents that the objects and traces represent. It can even be said that these objects do not deliver any specific memories of Hyeree’s past. This raises a question: if the objects’ meaning is opaque, then why does she make and arrange these objects in such a specific manner? It seems that the objects and traces do not represent a certain past but question the ontological status of the past itself. And this question inevitably leads to another question: how do we “remember” things in the past, especially if the past is something that we have never experienced but only heard about?</span>
+        </p>
+        
+        <p class="btext">
+          In many artists’ works, the word “remembrance” is often associated with grand historical narratives. But before thinking about past events in relation to larger historical narratives, we might ask in a very fundamental sense, how do all past events exist in the present? All past events endlessly deteriorate while continuously lingering in the present. Certain past events do not necessarily claim any legitimate reason to be remembered nor do they hold historical importance within a “grand” history. The past envisioned in Hyeree’s work through the objects and traces is neither one of a precious collection preserved and curated in a museum, nor one of enlightening cultural heritage archived in a library for the future generation. Neither are her objects dead relics in an excavation site waiting to be discovered. Then what is the status of those objects? How do the objects function in her work?
+        </p>
+        
+        <p>
+          <span class="btext">In Hyeree’s previous performances, “objects” played no less of a crucial role than her body. An art critic described that in</span> <i class="btext">LA-sung</i><span class="btext">(2016) “objects are both a tool to help narrate a story and evidence of memories.”</span><sup class="btext">1</sup> <span class="btext">In</span> <i class="btext">Flour Hat (Floor)</i><span class="btext">, however, the status of objects radically changes. Objects do not merely exist as a tool to deliver specific events. In this performance work, the materiality, characteristics, origins, and socio-political conditions of the main objects, that is flour and hats, generate countless meanings that exceed a mere representation of her personal memories. For example, flour and hats can enable viewers to think of numerous pairs of concepts such as daily necessities vs. decorative items, post-Korean War economic conditions in the 1950s vs. South Korean economic conditions in the 1980s, food inside of a body vs. clothes covering the outside of a body, and so forth. Exploring the various tactile qualities of flour and hats and thinking about possible meanings generated from the two objects, Hyeree makes dough, sprinkles flour, writes on flour, and hides herself in a big hat during the performance. She is not a storyteller who utilizes objects as instruments for addressing her memories; she is an activator who creates a site in which various meanings of the objects and their pasts can emerge and interplay.</span>
+        </p>
+        
+        <p>
+          <span class="btext">Differing from the somewhat ambiguous and opaque installation, the video seems to explicitly address the theme—the story of three generations—of</span> <i class="btext">Flour Hat (Floor)</i><span class="btext">. Wearing a long, connected hat together, braiding each other’s hair, and placing the long hat on their stomachs, the three actors infer a strong familial connection. They also create a star-shaped string figure together, and in the next sequence, stars appear in a person’s destiny on the palm lines of their hand. In the other scenes, which likely connote the stories of Hyeree’s grandfather and father, a person’s hands handle wet and soft flour dough, and another person outside hides her body under a big, dry, and thin hat-like object. Paralleling the two objects with each other explicitly reveals their contrasting tactility. Another person’s hands make noodles and braid them as if the noodles are hair. The motif of the line repeats, as hair, noodles, and string, while the various shapes of a star continuously appear. Even though the video follows a relatively clear narrative and theme, it is written in a folkloric style with a universal and archetypal quality, rather than demonstrating/illustrating concrete details from her family’s stories. Watching the video almost feels like reading an old folktale transferred from generation to generation in one’s region. It seems that Hyeree wants to refer to her family’s history, but at the same time she does not want her story to be confined in the realm of the “personal” or “particular.” What is seen in her work is somewhat contradicting impulses: impulses of narrating the particular and the universal. To what extent can her story be particular, and to what extent can it be universal? To what extent can it be personal, and to what extent can it be familiar for others? Can a “personal narrative” ever really exist?</span> <i class="btext">Flour Hat (Floor)</i><span class="btext">, covered by, overlapped with, and made of white flour, embodies an ambivalent and yet porous space with multiple entrances. Now it unfolds itself waiting for other stories to emerge.</span>
+        </p>
+        
+        <p class="btext">
+          (Text by Kaeun Park)
+        </p>
+        
+        <p>----------------</p>
+        
+        <p class="footnote">
+          <span class="btext">[1]  Haeju Kim, “What Fills Time: Object, Body, and Word,”</span> <a href="http://www.hyereero.com/text/hjkim/">http://www.hyereero.com/text/hjkim/</a>
+        </p>
+        
+      </div>
+      
+      <div id="text-container-right">
+        <p class="btext">
+          coming soon
+        </p>
+        
+      </div>
+    </div>
   </body>
 </html>

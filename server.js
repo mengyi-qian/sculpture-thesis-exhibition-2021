@@ -22,14 +22,23 @@ const db = low(adapter)
 app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
-app.get("/home2", (request, response) => {
-  response.sendFile(__dirname + "/views/index2.html");
-});
 app.get("/stella", (request, response) => {
   response.sendFile(__dirname + "/views/stella.html");
 });
 app.get("/hyeree", (request, response) => {
   response.sendFile(__dirname + "/views/hyeree.html");
+});
+app.get("/armando", (request, response) => {
+  response.sendFile(__dirname + "/views/armando.html");
+});
+app.get("/jeenho", (request, response) => {
+  response.sendFile(__dirname + "/views/jeenho.html");
+});
+app.get("/saejun", (request, response) => {
+  response.sendFile(__dirname + "/views/saejun.html");
+});
+app.get("/freddy", (request, response) => {
+  response.sendFile(__dirname + "/views/freddy.html");
 });
 
 db.defaults({noises: []}).write()

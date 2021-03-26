@@ -1,181 +1,235 @@
-const teaser = [
-  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FSaejun-teaser.mp4",
-  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-teaser.mp4",
-  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-teaser.mp4",
-  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Ffreddy-teaser.mp4",
-  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fhyeree-teaser.mp4",
-  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-teaser.mp4"
-]
+// const teaser = [
+//   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FSaejun-teaser.mp4",
+//   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-teaser.mp4",
+//   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-teaser.mp4",
+//   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Ffreddy-teaser.mp4",
+//   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fhyeree-teaser.mp4",
+//   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-teaser.mp4"
+// ]
+
+const videosStella = `<iframe src="https://player.vimeo.com/video/528385827?color=ffffff&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
 
 const imagesStella = [
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_003_1600_c.jpeg?v=1614984752546",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_12-20_0009-copy_1600_c.jpeg?v=1614984753420",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-5_1250.jpg",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-6_1250.png",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_027_1600_c.jpeg?v=1614984754689",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-7_1250.png",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_017_1600_c.jpeg?v=1614984753503",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_020_1600_c.jpeg?v=1614984753586",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_021_1600_c.jpeg?v=1614984754193",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_014_1600_c.jpeg?v=1614984754555",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_008_1600_c.jpeg?v=1614984753634",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_026_1600_c.jpeg?v=1614984754363",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2FChapter-NY_Stella-Zhong_022_1600_c.jpeg?v=1614984754288",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-001_1600_c.jpg?v=1614986488413",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-003_1600_c.jpg?v=1614986488508",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-002_1600_c.jpeg?v=1615398126235",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-007_1600_c.jpg?v=1614986488679",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-004_1600_c.jpg?v=1614986488573",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-005_1600_c.jpeg?v=1614986488413",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fstella-zhong-006_1600_c.jpeg?v=1614986488448"
-]
-const videosStella = [
-  `<iframe src="https://player.vimeo.com/video/397851678?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="800" height="450" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`,
-  `<iframe src="https://player.vimeo.com/video/408478068?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="800" height="450" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-18.jpg",// top
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-19.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-20.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-21.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-23.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-24.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-25.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-08.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-06.jpg",// right
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-07.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-09.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-10.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-15.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-17.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-projector.jpg",// bottom
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-31.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-28.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-27.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-14.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-12.jpg",
+  
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-36.jpg",//left
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-34.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-33.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-02.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-04.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-01.jpg"
 ]
 
 const imagesHyeree = [
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2F26_20190720-_MG_2127%202.jpg?v=1614914524878",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2F26_20190720-_MG_2128.jpg?v=1614914524970",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fnago.jpg?v=1614916429730",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2Fpassage.jpg?v=1614917718302",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2F85_movingprints1.jpg?v=1614917828250",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2F85_movingprints2.jpg?v=1614917825460",
-  "https://cdn.glitch.com/7abca12b-1979-4149-9fa2-0c9dc9c78fd7%2F85_movingprints3_v2.jpg?v=1614917824046"
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree001.jpg",// tpo
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree002.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree003.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree004.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree005.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree006.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree015.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree016.jpg",// right
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree017.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree018.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree022.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree008.jpg",// bottom
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree014.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree013.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree012.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree011.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree010.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree009.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree007.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree023.jpg",// left
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree024.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree025.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fhyeree-teaser.mp4"
 ]
-const videosHyeree = [
-  `<iframe src="https://player.vimeo.com/video/425709172?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="800" height="450" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+
+const imagesArmando = [
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-01.jpg",// top
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-02.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-03.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-04.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-05.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-06.jpg",// right
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-07.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-08.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-14.jpg",// bottom
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-13.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-12.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-11.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-10.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-09.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-15.jpg",// left
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-16.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-17.jpg"
+]
+
+const imagesJeenho = [
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-12.mp4",// top
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-1.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-2.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-3.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-4.jpg",// right
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-5.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-6.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-11.jpg",// bottom
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-7.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-8.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-10.jpg",// left
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-9.jpg"
+]
+
+const imagesFreddy = [
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFreddy.mp4",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_02.jpg",// top
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_03.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_04.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_05.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_06.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_09.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_07.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_08.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_10.jpg",// right
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_15.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_17.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_18.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_19.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_24.jpg",// bottom
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_23.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_22.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_21.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_25.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_20.jpg",
+
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_12.jpg",// left
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_13.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_14.jpg"
+]
+
+const imagesSaejun = [
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FAccumulated-Loss.mp4",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-1.jpg",// top
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-2.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-3.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-4.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-5.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-6.jpg",// right
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-7.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-8.jpg",
+  
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-13.jpg",// bottom
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-12.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-11.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-10.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-9.jpg",
+
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-14.jpg",// left
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-15.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-16.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fsaejun-17.jpg"
 ]
 
 
 // get name of the room
-let name = document.querySelectorAll('.name')[0].id
+let name = document.querySelectorAll('.name')[0]
 // get nav of names/titles
 let hoverImg = document.querySelectorAll('.hoverImg')
-let hoverVideo = document.querySelectorAll('.hoverVideo')
+let hoverVideo = document.querySelectorAll('.hoverVideo')[0]
 let entrance = document.querySelectorAll('.entrance')
 // get image/video container
 let showImage = document.querySelector('#showimage')
-// get corners on homepage
-let corners = []
-if ( document.querySelector('#corners') != null ) {
-  corners = document.querySelector('#corners').children
-}
+
 // match names and the arrays
 let imagesName = ""
-let videosName = ""
-if ( name === "stella" ) { imagesName = imagesStella; videosName = videosStella }
-if ( name === "hyeree" ) { imagesName = imagesHyeree; videosName = videosHyeree }
+if ( name.id === "stella" ) { imagesName = imagesStella }
+if ( name.id === "hyeree" ) { imagesName = imagesHyeree }
+if ( name.id === "armando" ) { imagesName = imagesArmando }
+if ( name.id === "jeenho" ) { imagesName = imagesJeenho }
+if ( name.id === "freddy" ) { imagesName = imagesFreddy }
+if ( name.id === "saejun" ) { imagesName = imagesSaejun }
 
 // add links to each name/title
 for (let i = 0; i < hoverImg.length; i++) {
   hoverImg[i].addEventListener('mouseover', () => {
-    showImage.innerHTML = `<img src=${imagesName[i]}>`
+    if (imagesName[i].slice(-3) === "mp4") {
+      name.style.display = "none"
+      showImage.innerHTML = `
+        <video width="auto" playsinline autoplay muted loop controls>
+          <source src=${imagesName[i]}>
+        </video>
+      `
+    } else {
+      name.style.display = "none"
+      showImage.innerHTML = `<img src=${imagesName[i]}>`
+    }
   })
 }
-for (let i = 0; i < hoverVideo.length; i++) {
-  hoverVideo[i].addEventListener('mouseover', () => {
-    showImage.innerHTML = videosName[i]
+// for vimeo iframe
+if (hoverVideo != null) {
+  hoverVideo.addEventListener('mouseover', () => {
+    name.style.display = "none"
+    showImage.innerHTML = videosStella
   })
 }
-for (let i = 0; i < entrance.length; i++) {
-  entrance[i].addEventListener('mouseenter', () => {
-    showImage.innerHTML = `
-      <video width="800" playsinline autoplay muted loop>
-        <source src=${teaser[i]}>
-      </video>
-    `
-  })
-  entrance[i].addEventListener('mouseleave', () => {
-    showImage.innerHTML = ''
-  })
-}
-// hide images/videos when hover on the corners
-for (let i = 0; i < corners.length; i++) {
-  corners[i].addEventListener('mouseover', () => {
-    showImage.innerHTML = ''
-  })
-}
-
-
-// text degradation on hover
-function textDecay(words) {
-  for (let i = 0; i < words.length; i++) {
-    // set initial hover state
-    let hover = false
-    // get font weight
-    let weight = words[i].style.fontFamily.slice(-1)
-    // for desktop: when mouse over the word
-    words[i].addEventListener('mouseenter', () => {
-      if ( weight < 9 ) {
-        weight++
-        words[i].style.fontFamily = "oldround" + weight
-      }
-      hover = true
-      // decay (weight+1) every 1/2 second
-      var textDecay = setInterval(function(){
-        if ( hover == true && weight < 9 ) {
-          weight++
-          words[i].style.fontFamily = "oldround" + weight
-        } else {
-          clearInterval(textDecay)
-        }
-      },500);
-    })
-    // for desktop
-    words[i].addEventListener('mouseleave', () => {
-      hover = false
-    })
+// hide image when click on image
+showImage.addEventListener('click', () => {
+  let showImage = document.querySelector('#showimage')
+  if (showImage.innerHTML !== "") {
+    name.style.display = "block"
+    showImage.innerHTML = ""
   }
-}
+})
 
-// text degradation on touch
-function textDecayMobile(words) {
-  for (let i = 0; i < words.length; i++) {
-    // set initial hover state
-    let hover = false
-    // get font weight
-    let weight = words[i].style.fontFamily.slice(-1)
-    // for touchscreen: when touch on the word
-    words[i].addEventListener('touchstart', (event) => {
-      event.preventDefault()
-      if ( weight < 9 ) {
-        weight++
-        words[i].style.fontFamily = "oldround" + weight
-      }
-      hover = true
-      // decay (weight+1) every 1/2 second
-      var textDecay = setInterval(function(){
-        if ( hover == true && weight < 9 ) {
-          weight++
-          words[i].style.fontFamily = "oldround" + weight
-        } else {
-          clearInterval(textDecay)
-        }
-      },500);
-    })
-    // for touchscreen
-    words[i].addEventListener('touchend', (event) => {
-      event.preventDefault()
-      hover = false
-    })
-  }
-}
 
-// // create a span for each word
-// let btexts = document.querySelectorAll(".btext")
-// for (let btext of btexts) {
-//   btext.innerHTML = btext.textContent.replace(/\b(\w+)\b/g, `<span style="font-family:oldround0">$1</span>`)
+// for (let i = 0; i < entrance.length; i++) {
+//   entrance[i].addEventListener('mouseenter', () => {
+//     showImage.innerHTML = `
+//       <video width="800" playsinline autoplay muted loop>
+//         <source src=${teaser[i]}>
+//       </video>
+//     `
+//   })
+//   entrance[i].addEventListener('mouseleave', () => {
+//     showImage.innerHTML = ''
+//   })
 // }
-// // loop through each word
-// let btextWords = document.querySelectorAll(".btext span")
-// textDecay(btextWords)
-// for (let btextWord of btextWords) {
-//   if (btextWord.textContent.length >= 10) {
-//     btextWord.style.wordBreak = "break-word"
-//     btextWord.style.hyphens = "auto"
-//   }
-// }
+
 
 // for mobile:
 function windowResize() {
@@ -183,7 +237,6 @@ function windowResize() {
   let vh = window.innerHeight * 0.01;
   // set the value in the --vh custom property to the root of the document
   document.documentElement.style.setProperty('--vh', `${vh}px`)
-  
   // get all the navs
   let navs = document.querySelectorAll('nav')
   // change nav positions when width < height
@@ -202,27 +255,3 @@ function windowResize() {
 windowResize() 
 window.onresize = windowResize
 
-// toggle show text
-let textButton = document.querySelector('#text')
-if (textButton != undefined) {
-  let textContainer = document.querySelector('#text-container')
-  textContainer.style.display = "none"
-  textButton.addEventListener('click', () => {
-    if ( textContainer.style.display === "none" ) {
-      // console.log("none")
-      textContainer.style.display = "flex"
-      document.querySelector('#wall').style.opacity = "0"
-      document.querySelector('.center').style.opacity = "0"
-      document.querySelector('#showimage').style.opacity = "0"
-      textButton.textContent = "Close"
-    } else {
-      // console.log("flex")
-      textContainer.style.display = "none"
-      document.querySelector('#wall').style.opacity = "1"
-      document.querySelector('.center').style.opacity = "1"
-      document.querySelector('#showimage').style.opacity = "1"
-      textButton.textContent = "Text"
-    }
-  })
-}
-  

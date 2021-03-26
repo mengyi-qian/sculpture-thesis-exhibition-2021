@@ -53,7 +53,7 @@ body {
   height: calc(var(--vh, 1vh) * 100); /* mobile */
   border: 5px solid rgba(0,0,0,0);
 }
-.footnote, .footnote span {
+.footnote, .footnote > *, .footnote span {
   font-size: 15px;
 }
 .center {
@@ -79,17 +79,21 @@ nav {
 nav a {
   display: inline-block;
   padding: 1em;
-  cursor: default;
+  cursor: pointer;
 }
 a:hover,.exit:hover,.hoverImg:hover,.hoverVideo:hover {
   font-family: oldround4;
 }
 #showimage {
-  width: 100vw;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100); /* mobile */
+  width: 64vw;
+  height: 80vh;
+  height: calc(var(--vh, 1vh) * 80); /* mobile */
+  margin-top: 10vh;
+  margin-top: calc(var(--vh, 1vh) * 10); /* mobile */
+  margin-bottom: 10vh;
+  margin-bottom: calc(var(--vh, 1vh) * 10); /* mobile */
+  margin-left: 18vw;
   position: relative;
-  pointer-events: none;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -100,7 +104,10 @@ a:hover,.exit:hover,.hoverImg:hover,.hoverVideo:hover {
   max-width: 64vw;
   max-height: 80vh;
   max-height: calc(var(--vh, 1vh) * 80); /* mobile */
-  object-fit: scale-down;
+/*   object-fit: scale-down; */
+}
+#showimage iframe > *{
+  
 }
 .hoverImg,.hoverVideo {
   cursor: pointer;
@@ -122,7 +129,7 @@ a:hover,.exit:hover,.hoverImg:hover,.hoverVideo:hover {
   *, body {
     font-size: 15px;
   }
-  .footnote, .footnote span {
+  .footnote, .footnote span, .footnote a {
     font-size: 12px;
   }
 }
