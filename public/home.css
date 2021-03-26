@@ -1,5 +1,3 @@
-/* a {cursor: pointer;} */
-
 #corners > div {
   position: fixed;
   font-family: oldround4;
@@ -58,6 +56,9 @@
 }
 .left-name {padding-left: 80px;}
 .right-name {padding-right: 80px;}
+.center {
+  width: 80vw;
+}
 
 
 @media only screen and (max-width: 600px) {

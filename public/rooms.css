@@ -1,3 +1,6 @@
+nav a {
+  cursor: default;
+}
 #top {top: -2em;}
 #bottom {bottom: -2em;}
 #top,#bottom {
@@ -66,7 +69,7 @@
   box-sizing: border-box; 
   top: 0;
   left: 0;
-/*   display: flex; */
+  display: flex;
   flex-flow: column nowrap;
   align-items: center;
   align-content: center;
@@ -86,8 +89,6 @@
   line-height: 1.2em;
   background-color: ghostwhite;
   position: relative;
-/*   word-break: normal; */
-/*   hyphens: auto; */
 }
 .footnote {
   max-width: 630px;
@@ -121,8 +122,19 @@ mark:hover + .show-comment {
   display: inline;
 }
 
-.wider {
-  max-width: 800px; !important
+.center {
+  width: 640px;
+}
+#hyeree, #armando {
+  width: 800px; !important
+}
+.info, .info > * {
+  max-width: 640px;
+  font-size: 15px;
+}
+.wider, .wider > * {
+  max-width: 800px;
+  font-size: 15px;
 }
 
 
@@ -142,6 +154,20 @@ mark:hover + .show-comment {
   }
   mark:hover + .show-comment {
     display: inline;
+  }
+  .center {
+    width: 54vw;
+  }
+  #hyeree, #armando {
+    width: 70vw; !important
+  }
+  .info, .info > * {
+    max-width: 60vw;
+    font-size: 15px;
+  }
+  .wider, .wider > * {
+    max-width: 75vw;
+    font-size: 15px;
   }
 }
 
@@ -164,5 +190,19 @@ mark:hover + .show-comment {
   }
   mark:hover + .show-comment {
     display: inline;
+  }
+  .center {
+    width: 60vw;
+  }
+  #hyeree, #armando {
+    width: 80vw; !important
+  }
+  .info, .info > * {
+    width: 60vw;
+    font-size: 12px;
+  }
+  .wider, .wider > * {
+    width: 80vw;
+    font-size: 12px;
   }
 }

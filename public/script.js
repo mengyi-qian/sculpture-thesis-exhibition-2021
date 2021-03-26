@@ -184,38 +184,39 @@ if ( name.id === "jeenho" ) { imagesName = imagesJeenho }
 if ( name.id === "freddy" ) { imagesName = imagesFreddy }
 if ( name.id === "saejun" ) { imagesName = imagesSaejun }
 
-// add links to each name/title
-for (let i = 0; i < hoverImg.length; i++) {
-  hoverImg[i].addEventListener('mouseover', () => {
-    if (imagesName[i].slice(-3) === "mp4") {
-      name.style.display = "none"
-      showImage.innerHTML = `
-        <video width="auto" playsinline autoplay muted loop controls>
-          <source src=${imagesName[i]}>
-        </video>
-      `
-    } else {
-      name.style.display = "none"
-      showImage.innerHTML = `<img src=${imagesName[i]}>`
-    }
-  })
+function hoverShowImage() {
+  // add links to each name/title
+  for (let i = 0; i < hoverImg.length; i++) {
+    hoverImg[i].addEventListener('mouseover', () => {
+      if (imagesName[i].slice(-3) === "mp4") {
+        showImage.innerHTML = `
+          <video width="auto" playsinline autoplay muted loop controls>
+            <source src=${imagesName[i]}>
+          </video>
+        `
+      } else {
+        showImage.innerHTML = `<img src=${imagesName[i]}>`
+      }
+    })
+  }
+  // for vimeo iframe
+  if (hoverVideo != null) {
+    hoverVideo.addEventListener('mouseover', () => {
+      showImage.innerHTML = videosStella
+    })
+  }
 }
-// for vimeo iframe
-if (hoverVideo != null) {
-  hoverVideo.addEventListener('mouseover', () => {
-    name.style.display = "none"
-    showImage.innerHTML = videosStella
-  })
-}
+// delay the event listener for 1 second
+let delayHover = setTimeout(hoverShowImage, 1000);
+
+
 // hide image when click on image
 showImage.addEventListener('click', () => {
   let showImage = document.querySelector('#showimage')
   if (showImage.innerHTML !== "") {
-    name.style.display = "block"
     showImage.innerHTML = ""
   }
 })
-
 
 // for (let i = 0; i < entrance.length; i++) {
 //   entrance[i].addEventListener('mouseenter', () => {
@@ -229,7 +230,6 @@ showImage.addEventListener('click', () => {
 //     showImage.innerHTML = ''
 //   })
 // }
-
 
 // for mobile:
 function windowResize() {

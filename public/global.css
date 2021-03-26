@@ -106,13 +106,6 @@ a:hover,.exit:hover,.hoverImg:hover,.hoverVideo:hover {
   max-height: calc(var(--vh, 1vh) * 80); /* mobile */
 /*   object-fit: scale-down; */
 }
-#showimage iframe > *{
-  
-}
-.hoverImg,.hoverVideo {
-  cursor: pointer;
-}
-
 #loading-fonts {
   pointer-events: none;
   position: absolute;
