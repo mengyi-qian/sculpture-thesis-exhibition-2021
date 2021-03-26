@@ -101,6 +101,7 @@ a:hover,.exit:hover,.hoverImg:hover,.hoverVideo:hover {
   align-content: center;
 }
 #showimage img, #showimage video, #showimage iframe {
+  outline: none;
   max-width: 64vw;
   max-height: 80vh;
   max-height: calc(var(--vh, 1vh) * 80); /* mobile */

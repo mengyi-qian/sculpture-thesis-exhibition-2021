@@ -7,7 +7,7 @@
 //   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-teaser.mp4"
 // ]
 
-const videosStella = `<iframe src="https://player.vimeo.com/video/528385827?color=ffffff&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+const videosStella = `<iframe src="https://player.vimeo.com/video/529484521?color=ffffff&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
 
 const imagesStella = [
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-18.jpg",// top
@@ -41,6 +41,8 @@ const imagesStella = [
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-04.jpg",
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fstella-01.jpg"
 ]
+
+const videosHyeree = `<iframe src="https://player.vimeo.com/video/523906099?color=ffffff&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
 
 const imagesHyeree = [
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FHyeree001.jpg",// tpo
@@ -177,8 +179,9 @@ let showImage = document.querySelector('#showimage')
 
 // match names and the arrays
 let imagesName = ""
-if ( name.id === "stella" ) { imagesName = imagesStella }
-if ( name.id === "hyeree" ) { imagesName = imagesHyeree }
+let videosName = ""
+if ( name.id === "stella" ) { imagesName = imagesStella; videosName = videosStella }
+if ( name.id === "hyeree" ) { imagesName = imagesHyeree; videosName = videosHyeree }
 if ( name.id === "armando" ) { imagesName = imagesArmando }
 if ( name.id === "jeenho" ) { imagesName = imagesJeenho }
 if ( name.id === "freddy" ) { imagesName = imagesFreddy }
@@ -202,7 +205,7 @@ function hoverShowImage() {
   // for vimeo iframe
   if (hoverVideo != null) {
     hoverVideo.addEventListener('mouseover', () => {
-      showImage.innerHTML = videosStella
+      showImage.innerHTML = videosName
     })
   }
 }
