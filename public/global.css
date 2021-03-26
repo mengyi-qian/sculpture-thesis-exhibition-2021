@@ -57,7 +57,7 @@ body {
   font-size: 15px;
 }
 .center {
-  position: fixed;
+  position: absolute;
   top: 50vh;
   top: calc(var(--vh, 1vh) * 50); /* mobile */
   left: 50vw;
