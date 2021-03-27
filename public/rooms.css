@@ -118,6 +118,9 @@ sup, sup > * {
 mark:hover + .show-comment {
   display: inline;
 }
+.author {
+  margin-top: 2em;
+}
 
 .center {
   width: 640px;
