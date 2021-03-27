@@ -102,9 +102,6 @@ sup, sup > * {
   font-size: 15px;
   margin-bottom: 0.5em;
 }
-.footnote a {
-  text-decoration: underline;
-}
 .comment {
   display: inline-block;
   position: absolute;
@@ -131,10 +128,12 @@ mark:hover + .show-comment {
 .info, .info > * {
   max-width: 640px;
   font-size: 15px;
+  line-height: 1.1em;
 }
 .wider, .wider > * {
   max-width: 800px;
   font-size: 15px;
+  line-height: 1.1em;
 }
 
 

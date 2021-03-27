@@ -114,6 +114,22 @@ function textDecayMobile(words) {
 }
 
 
+function showInfo() {
+  let titlename = document.querySelectorAll("#title .name")[0]
+  let titleinfo = document.querySelectorAll("#title .info")[0]
+  titleinfo.style.display = "block"
+  titlename.style.display = "none"
+}
+function hideInfo(e) {
+  let titlename = document.querySelectorAll("#title .name")[0]
+  let titleinfo = document.querySelectorAll("#title .info")[0]
+  if (e.target.tagName != "A") {
+    titlename.style.display = "block"
+    titleinfo.style.display = "none"
+  }
+}
+
+
 function hidebg() {
   document.querySelector('#wall').style.opacity = "0"
   document.querySelector('.center').style.opacity = "0"

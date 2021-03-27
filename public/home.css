@@ -57,7 +57,37 @@
 .left-name {padding-left: 80px;}
 .right-name {padding-right: 80px;}
 .center {
-  width: 80vw;
+  max-width: 640px;
+}
+#title .info {
+  display: none;
+}
+#title .info > * {
+  width: 640px;
+  margin-bottom: 2em;
+}
+#title .info * {
+  font-size: 15px;
+  line-height: 1.1em;
+  text-align: left;
+}
+#name-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+ul, ul * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.1em;
+}
+li a, p a {
+  text-decoration: underline;
 }
 
 

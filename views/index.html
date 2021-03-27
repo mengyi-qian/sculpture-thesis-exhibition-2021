@@ -49,7 +49,7 @@
         socket.on('refresh data', (noises)=>{
           let n = noises.length
           noise.innerHTML = getNoises(noises, n, "x", "y")
-        })
+        })        
       }
     </script>
     
@@ -61,7 +61,45 @@
         <div class="btext">Yale School Of Art</div>
         <div class="btext">MFA Sculpture Thesis Exhibition</div>
         <div class="btext">March 22 - 28, 2021</div>
-<!--         <br><div class="btext footnote">Online Exhibition Goes Live on March 26</div> -->
+        <br>
+        <div class="footnote"><a onclick="showInfo()">about</a></div>
+      </div>
+      
+      <div class="center info" onclick="hideInfo(event)">
+        <p>The Yale School of Art is pleased to announce the Sculpture Graduate Thesis Exhibition, presenting works by MFA candidates Armando Cortés, Sae Jun Kim, Jeenho Seo, Hyeree Ro, Freddy Villalobos, and Stella Zhong.</p>
+        <div id="name-container">
+          <ul>
+            <li>Artists</li>
+            <li>&nbsp;</li>
+            <li><a href="https://armandogcortes.com" target="_blank">Armando Cortés</a></li>
+            <li><a href="https://www.saejunkim.com" target="_blank">Sae Jun Kim</a></li>
+            <li><a href="https://www.jeenhoseo.com" target="_blank">Jeenho Seo</a></li>
+            <li><a href="http://www.hyereero.com" target="_blank">Hyeree Ro</a></li>
+            <li><a href="https://freddyvillalobos.com" target="_blank">Freddy Villalobos</a></li>
+            <li><a href="https://stellazhong.com" target="_blank">Stella Zhong</a></li>
+          </ul>
+          <ul>
+            <li>Writers</li>
+            <li>&nbsp;</li>
+            <li><a href="https://harryburke.info" target="_blank">Harry Burke</a></li>
+            <li><a href="https://arthistory.yale.edu/people/swagato-chakravorty" target="_blank">Swagato Chakravorty</a></li>
+            <li><a href="https://arthistory.yale.edu/people/kevin-hong" target="_blank">Kevin Hong</a></li>
+            <li><a href="https://www.adelakim.com" target="_blank">Adela Kim</a></li>
+            <li><a href="https://arthistory.yale.edu/people/nathalie-miraval" target="_blank">Nathalie Miraval</a></li>
+            <li><a href="https://lsa.umich.edu/asian/graduates/current-students/current-graduate-students/kaeun-park.html" target="_blank">Kaeun Park</a></li>
+            <li><a href="https://arthistory.yale.edu/people/carlos-valladares" target="_blank">Carlos Valladares</a></li>
+          </ul>
+          <ul>
+            <li>Photographers</li>
+            <li>&nbsp;</li>
+            <li><a href="https://jackiefurtado.com" target="_blank">Jackie Furtado</a></li>
+            <li><a href="http://merikgoma.com" target="_blank">Merik Goma</a></li>
+            <li><a href="https://nabiljharb.com/about" target="_blank">Nabil Narb</a></li>
+          </ul>
+        </div>
+        <p>Website Design & Development by <a href="http://www.mengyiqian.com" target="_blank">Mengyi Qian</a> and <a href="https://www.art.yale.edu/minhwan-kim" target="_blank">Minhwan Kim</a></p>
+        
+        <br>
       </div>
     </div>
 
@@ -73,7 +111,7 @@
     </div>
 
     <nav id="top">
-      <a class="entrance left-name" href="/saejun">Saejun Kim</a>
+      <a class="entrance left-name" href="/saejun">Sae Jun Kim</a>
       <a class="entrance right-name" href="/armando">Armando Cortés</a>
     </nav>
     <nav id="right">
