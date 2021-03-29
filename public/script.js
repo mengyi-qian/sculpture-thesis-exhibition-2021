@@ -117,7 +117,6 @@ const imagesJeenho = [
 const videosFreddy = `<iframe src="https://player.vimeo.com/video/530133092?color=ffffff&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
 
 const imagesFreddy = [
-  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFreddy.mp4",
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_02.jpg",// top
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_03.jpg",
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_04.jpg",
