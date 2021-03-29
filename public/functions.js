@@ -100,6 +100,7 @@ function textDecayMobile(words) {
         if ( hover == true && weight < 9 ) {
           weight++
           words[i].style.fontFamily = "oldround" + weight
+          // console.log("decaying")
         } else {
           clearInterval(textDecay)
         }

@@ -114,6 +114,8 @@ const imagesJeenho = [
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-9.jpg"
 ]
 
+const videosFreddy = `<iframe src="https://player.vimeo.com/video/530133092?color=ffffff&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+
 const imagesFreddy = [
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFreddy.mp4",
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2FFV_02.jpg",// top
@@ -184,7 +186,7 @@ if ( name.id === "stella" ) { imagesName = imagesStella; videosName = videosStel
 if ( name.id === "hyeree" ) { imagesName = imagesHyeree; videosName = videosHyeree }
 if ( name.id === "armando" ) { imagesName = imagesArmando }
 if ( name.id === "jeenho" ) { imagesName = imagesJeenho }
-if ( name.id === "freddy" ) { imagesName = imagesFreddy }
+if ( name.id === "freddy" ) { imagesName = imagesFreddy; videosName = videosFreddy }
 if ( name.id === "saejun" ) { imagesName = imagesSaejun }
 
 function hoverShowImage() {
