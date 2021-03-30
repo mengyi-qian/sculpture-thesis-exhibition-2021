@@ -96,9 +96,10 @@ const imagesArmando = [
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Farmando-17.jpg"
 ]
 
+const videosJeenho = `<iframe src="https://player.vimeo.com/video/530483534?color=ffffff&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+
 const imagesJeenho = [
-  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-12.mp4",// top
-  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-1.jpg",
+  "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-1.jpg",// top
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-2.jpg",
   "https://cdn.glitch.com/a840980d-4afb-44d8-a53e-527ff5d74d1b%2Fjeenho-3.jpg",
   
@@ -184,7 +185,7 @@ let videosName = ""
 if ( name.id === "stella" ) { imagesName = imagesStella; videosName = videosStella }
 if ( name.id === "hyeree" ) { imagesName = imagesHyeree; videosName = videosHyeree }
 if ( name.id === "armando" ) { imagesName = imagesArmando }
-if ( name.id === "jeenho" ) { imagesName = imagesJeenho }
+if ( name.id === "jeenho" ) { imagesName = imagesJeenho; videosName = videosJeenho }
 if ( name.id === "freddy" ) { imagesName = imagesFreddy; videosName = videosFreddy }
 if ( name.id === "saejun" ) { imagesName = imagesSaejun }
 
